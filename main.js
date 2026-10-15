@@ -85,6 +85,7 @@ function iniciarGaleria() {
   const flechas = document.querySelector('[data-flechas]');
   const anterior = document.querySelector('[data-pista-anterior]');
   const siguiente = document.querySelector('[data-pista-siguiente]');
+  const progreso = document.querySelector('[data-progreso]');
   if (!flechas || !anterior || !siguiente) return enlaces;
 
   // aria-disabled en vez de disabled: así el foco no se pierde al llegar al final
@@ -93,6 +94,22 @@ function iniciarGaleria() {
     flechas.hidden = maximo <= 2;
     anterior.setAttribute('aria-disabled', String(pista.scrollLeft <= 2));
     siguiente.setAttribute('aria-disabled', String(pista.scrollLeft >= maximo - 2));
+
+    // Raya de progreso: su tramo oscuro mide lo que se ve y avanza con la tira
+    if (progreso) {
+      progreso.hidden = maximo <= 2;
+      const visible = pista.clientWidth / pista.scrollWidth;
+      const avance = maximo > 0 ? pista.scrollLeft / maximo : 0;
+      const barra = progreso.firstElementChild;
+      barra.style.setProperty('--visible', `${visible * 100}%`);
+      barra.style.setProperty('--avance', `${avance * (1 / visible - 1) * 100}%`);
+    }
+  };
+  let pendiente = false;
+  const alDesplazar = () => {
+    if (pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(() => { pendiente = false; actualizar(); });
   };
 
   const mover = (sentido) => {
@@ -102,7 +119,7 @@ function iniciarGaleria() {
 
   anterior.addEventListener('click', () => { if (anterior.getAttribute('aria-disabled') !== 'true') mover(-1); });
   siguiente.addEventListener('click', () => { if (siguiente.getAttribute('aria-disabled') !== 'true') mover(1); });
-  pista.addEventListener('scroll', retrasar(actualizar, 60), { passive: true });
+  pista.addEventListener('scroll', alDesplazar, { passive: true });
   window.addEventListener('resize', retrasar(actualizar, 150));
   actualizar();
 

@@ -7,7 +7,7 @@ en `index.html` (una sola página) y lleva `noindex` mientras lo sea.
 
 | Dato | Dónde se nota | Qué se ha hecho |
 |---|---|---|
-| **Logotipo original** (SVG o PNG) | Cabecera y pie | Marca provisional: «BLUME» con Bellefair y una hoja de palmera dibujada a partir del rótulo que se ve en las fotos. Marcador visible en el pie. |
+| **Logotipo original** (SVG o PNG) | Cabecera y pie | Marca provisional: «BLUME» con Instrument Serif y una hoja de palmera dibujada a partir del rótulo que se ve en las fotos. Marcador visible en el pie. |
 | Textos legales (aviso legal, privacidad, cookies) | `legal.html` | Página marcada como pendiente. No se ha redactado nada. |
 | Email | — | No aparece en la web. |
 | ¿El teléfono tiene WhatsApp? | — | Es un fijo (943), así que la acción principal es «Llamar». No se ha puesto WhatsApp. |
@@ -25,16 +25,16 @@ permiso para usarlas** (y si alguna es de un fotógrafo).
 
 Todas son pequeñas (la mayor, 926 px de ancho). Por eso ninguna se muestra a
 pantalla completa en escritorio: la portada va a media pantalla y la galería a
-27 rem de alto. Si hay originales más grandes, conviene pedirlos.
+30 rem de alto. Si hay originales más grandes, conviene pedirlos.
 
 | Foto | Uso | Observaciones |
 |---|---|---|
-| `exterior2` | Portada | La mejor: escaparate de noche con el rótulo. Pequeña pegatina roja en la esquina superior izquierda (queda fundida con la noche). |
+| `exterior1` | Portada | La más luminosa: el expositor de la entrada a pleno color. Caja con la palabra «Holland» (es la marca de la caja, no otro negocio). |
 | `interior1` | Servicios · plantas | Sin problemas. |
 | `flores-secas1` | Servicios · flor seca | Sin problemas. |
 | `ramo-boda1` | Servicios · ramos | Se ve una mano con pulsera y, en el reflejo del cristal, el interior. Sin cara. |
 | `ramo-boda2` | Galería | Brazo con un **tatuaje visible**: puede identificar a la persona. Pedir permiso o cambiarla. |
-| `exterior1` | Galería | Caja con la palabra «Holland» (es la marca de la caja, no otro negocio). |
+| `exterior2` | Galería | Escaparate de noche con el rótulo. Pequeña pegatina roja en la esquina superior izquierda. |
 | `flores-secas2`, `flores-secas3`, `ramo-deco1`, `ramo-deco2`, `plantas1` | Galería | Sin problemas. |
 | `ramo-boda3` | No usada | Muy parecida a `ramo-boda2`; persona de cuerpo parcial. |
 | `ramo-deco3` | No usada | Es el **interior de una vivienda particular** (privacidad) y repite el centro de `ramo-deco2`. |
@@ -43,7 +43,7 @@ pantalla completa en escritorio: la portada va a media pantalla y la galería a
 
 ## Privacidad y terceros
 
-- **Google Fonts** (Bellefair y Alegreya Sans) y **Google Maps** (iframe del mapa)
+- **Google Fonts** (Instrument Serif y Hanken Grotesk) y **Google Maps** (iframe del mapa)
   hacen peticiones a Google desde el navegador del visitante (se envía su IP).
   Revisar en la política de privacidad/cookies. Alternativas para la versión
   real: alojar las fuentes en el propio servidor y cargar el mapa solo al pulsar.
