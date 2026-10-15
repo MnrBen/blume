@@ -7,7 +7,7 @@ en `index.html` (una sola página) y lleva `noindex` mientras lo sea.
 
 | Dato | Dónde se nota | Qué se ha hecho |
 |---|---|---|
-| **Logotipo original** (SVG o PNG) | Cabecera y pie | Marca provisional: «BLUME» con Instrument Serif y una hoja de palmera dibujada a partir del rótulo que se ve en las fotos. Marcador visible en el pie. |
+| **Logotipo original** (SVG o PNG) | Cabecera y pie | Marca provisional: «BLUME» con Gloock y una hoja de palmera dibujada a partir del rótulo que se ve en las fotos. Marcador visible en el pie. |
 | Textos legales (aviso legal, privacidad, cookies) | `legal.html` | Página marcada como pendiente. No se ha redactado nada. |
 | Email | — | No aparece en la web. |
 | ¿El teléfono tiene WhatsApp? | — | Es un fijo (943), así que la acción principal es «Llamar». No se ha puesto WhatsApp. |
@@ -24,8 +24,8 @@ Origen: historias destacadas de Instagram de la tienda. **Confirmar con Susana e
 permiso para usarlas** (y si alguna es de un fotógrafo).
 
 Todas son pequeñas (la mayor, 926 px de ancho). Por eso ninguna se muestra a
-pantalla completa en escritorio: la portada va a media pantalla y la galería a
-30 rem de alto. Si hay originales más grandes, conviene pedirlos.
+pantalla completa en escritorio: la portada va a media pantalla, en móvil nunca
+pasa de 696 px de alto (el de la foto) y la galería va a 22 rem de alto. Si hay originales más grandes, conviene pedirlos.
 
 | Foto | Uso | Observaciones |
 |---|---|---|
@@ -43,7 +43,7 @@ pantalla completa en escritorio: la portada va a media pantalla y la galería a
 
 ## Privacidad y terceros
 
-- **Google Fonts** (Instrument Serif y Hanken Grotesk) y **Google Maps** (iframe del mapa)
+- **Google Fonts** (Gloock y Albert Sans) y **Google Maps** (iframe del mapa)
   hacen peticiones a Google desde el navegador del visitante (se envía su IP).
   Revisar en la política de privacidad/cookies. Alternativas para la versión
   real: alojar las fuentes en el propio servidor y cargar el mapa solo al pulsar.
