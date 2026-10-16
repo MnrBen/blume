@@ -10,7 +10,8 @@
                         13. Movimiento
    Mobile-first: estilos base para móvil y min-width para más ancho.
    Identidad a dos colores: el verde del logotipo de Blume, en profundo,
-   y el rosa de las hortensias. Se alternan por bloques.
+   y el rosa de las hortensias, alternados por bloques. La maquetación de
+   las secciones es la de la primera versión de la demo.
    ============================================================= */
 
 
@@ -34,17 +35,17 @@
 
   --cabecera: 3.75rem;
   --margen: 1.25rem;
-  --ancho: 74rem;
+  --ancho: 72rem;
   --radio: 14px;
   --curva: cubic-bezier(.2, .7, .2, 1);
 }
 
-@media (min-width: 600px) { :root { --margen: 2rem; } }
+@media (min-width: 600px) { :root { --margen: 1.75rem; } }
 @media (min-width: 768px) { :root { --cabecera: 4.5rem; } }
-@media (min-width: 1100px) { :root { --margen: 3rem; } }
+@media (min-width: 1024px) { :root { --margen: 2.5rem; } }
 
 /* Bloques oscuros: cambian el color del foco */
-.cabecera, .portada, .galeria, .entrega, .pie, .visor { --foco: var(--rosa); }
+.cabecera, .portada, .galeria, .pie, .visor { --foco: var(--rosa); }
 
 
 /* 2. Base ----------------------------------------------------- */
@@ -74,7 +75,7 @@ h1, h2, h3 {
   margin: 0;
   font-family: var(--f-titulo);
   font-weight: 400;
-  line-height: 1.02;
+  line-height: 1.04;
   letter-spacing: -.01em;
   text-wrap: balance;
 }
@@ -122,6 +123,22 @@ a { color: inherit; }
   font-weight: 600;
 }
 .saltar:focus { top: .5rem; }
+
+/* Antetítulo de cada sección, con la hoja de palmera del rótulo */
+.antetitulo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .9rem;
+  color: var(--verde);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: .02em;
+}
+.antetitulo__hoja { width: 1.6rem; height: 1.6rem; flex: none; }
+.portada .antetitulo,
+.galeria .antetitulo { color: var(--rosa); }
 
 .solo-escritorio { display: none; }
 @media (min-width: 768px) {
@@ -276,117 +293,64 @@ a { color: inherit; }
 .cabecera--portada-visible .boton--cabecera { opacity: 0; visibility: hidden; }
 
 
-/* 6. Portada -------------------------------------------------- */
+/* 6. Portada: el escaparate de noche --------------------------- */
 
-/* Móvil y tableta: la foto ocupa la pantalla y el texto va encima, abajo,
-   sobre un degradado del mismo verde que solo cubre la zona del texto.
-   El alto nunca pasa de 696 px, el de la foto real, para que no se emborrone. */
-.portada {
+.portada { background: var(--verde); color: var(--rosa-claro); }
+
+.portada__interior {
   display: grid;
-  grid-template-columns: 100%;
-  background: var(--verde);
-  color: var(--rosa-claro);
+  max-width: calc(var(--ancho) + 2 * var(--margen));
+  margin-inline: auto;
 }
 
-.portada__foto {
-  grid-area: 1 / 1;
-  position: relative;
-  height: clamp(30rem, calc(100svh - var(--cabecera) - 3rem), 43.5rem);
-  overflow: hidden;
-}
-.portada__foto img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 58% 30%;
-}
-.portada__texto {
-  grid-area: 1 / 1;
-  align-self: end;
-  position: relative;
-  isolation: isolate;
-  padding: 0 var(--margen) 1.75rem;
-}
-/* El degradado va atado al bloque de texto: cubre siempre las letras,
-   sea cual sea el alto de la pantalla, y deja limpia la parte de arriba */
-.portada__texto::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset: -6rem 0 0;
-  background: linear-gradient(to bottom,
-    rgb(11 74 55 / 0) 0,
-    rgb(11 74 55 / .84) 6rem,
-    rgb(11 74 55 / .94) 55%,
-    var(--verde) 100%);
-}
+/* Móvil: la foto arriba, a todo lo ancho y con su color real */
+.portada__foto { overflow: hidden; }
+.portada__foto img { width: 100%; }
 
-.portada__lugar {
-  display: inline-block;
-  margin-bottom: 1rem;
-  padding: .3rem .8rem;
-  border: 1px solid rgb(244 212 207 / .55);
-  border-radius: 999px;
-  background: rgb(7 52 38 / .55);
-  color: var(--rosa);
-  font-size: .8125rem;
-  font-weight: 600;
-  letter-spacing: .02em;
-}
+.portada__texto { padding: 1.75rem var(--margen) 3rem; }
 
 .portada h1 {
-  max-width: 13ch;
+  max-width: 14ch;
   color: var(--rosa-claro);
-  font-size: clamp(2.5rem, 1.75rem + 3.6vw, 4.5rem);
+  font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.25rem);
   line-height: 1.02;
 }
 
-.portada .boton--principal { margin-top: 1.5rem; }
-
-.portada__resto {
-  display: grid;
-  justify-items: start;
-  gap: .75rem;
-  padding: .25rem var(--margen) 2.5rem;
+.portada__entrada {
+  max-width: 32rem;
+  margin-top: 1rem;
+  color: var(--salvia);
+  font-size: 1.125rem;
 }
 
-.portada__entrada { max-width: 34rem; color: var(--salvia); }
+.portada__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1.5rem;
+  margin-top: 1.75rem;
+}
 .portada .enlace-flecha { color: var(--rosa); }
 
-/* Tableta: mismo esquema, con el texto más contenido */
+/* Tableta: foto a lo ancho pero recortada en alto */
 @media (min-width: 600px) and (max-width: 959px) {
-  .portada__texto { padding-bottom: 2.25rem; }
-  .portada__resto { padding-bottom: 3rem; }
+  .portada__foto img {
+    height: min(50vh, 27rem);
+    object-fit: cover;
+    object-position: 50% 40%;
+  }
 }
 
-/* Escritorio: panel verde con el texto a la izquierda y la foto a sangre a la
-   derecha (como mucho 880 × 696, su tamaño real) */
+/* Escritorio: texto a la izquierda y escaparate a la derecha, a media
+   pantalla (nunca más grande que la foto real, que mide 880 × 651) */
 @media (min-width: 960px) {
-  .portada {
-    --borde: max(var(--margen), (100vw - var(--ancho)) / 2);
-    grid-template-columns: minmax(0, 1fr) min(50vw, 55rem);
-    height: min(calc(100svh - var(--cabecera)), 43.5rem);
-    min-height: 36rem;
+  .portada__interior {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    padding-inline: var(--margen);
   }
-  .portada__foto { grid-column: 2; grid-row: 1 / -1; height: 100%; }
-  .portada__texto::before { display: none; }
-  .portada__foto img { object-position: 50% 50%; }
-  .portada__lugar { background: transparent; }
-
-  /* Orden de lectura en el panel: titular, descripción, llamar, cómo llegar */
-  .portada { grid-template-rows: 1fr repeat(5, auto) 1fr; }
-  .portada__texto, .portada__resto { display: contents; }
-  .portada__lugar, .portada h1, .portada__entrada, .portada .boton--principal, .portada .enlace-flecha {
-    grid-column: 1;
-    justify-self: start;
-    margin-left: var(--borde);
-    margin-right: clamp(2rem, 4vw, 4.5rem);
-  }
-  .portada__lugar { grid-row: 2; }
-  .portada h1 { grid-row: 3; }
-  .portada__entrada { grid-row: 4; margin-top: 1.5rem; }
-  .portada .boton--principal { grid-row: 5; margin-top: 2rem; }
-  .portada .enlace-flecha { grid-row: 6; margin-top: .75rem; }
+  .portada__texto { grid-column: 1; grid-row: 1; padding: 3rem 2.5rem 3.5rem 0; }
+  .portada__foto { grid-column: 2; grid-row: 1; margin-block: 2.25rem 2.75rem; border-radius: var(--radio); }
 }
 
 
@@ -398,91 +362,59 @@ a { color: inherit; }
 .servicios, .contacto { background: var(--rosa); color: var(--tinta); }
 .galeria { background: var(--verde); color: var(--rosa-claro); }
 
+.seccion__cabeza { margin-bottom: 2rem; }
 .seccion h2 {
   max-width: 18ch;
-  margin-bottom: 1.75rem;
   color: var(--verde);
   font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
 }
 
 @media (min-width: 768px) {
   .seccion { padding-block: 5rem; }
-  .seccion h2 { margin-bottom: 2.5rem; }
+  .seccion__cabeza { margin-bottom: 2.75rem; }
 }
 
 
 /* 8. Servicios ------------------------------------------------ */
 
-/* Índice: cada servicio es una fila con una foto pequeña */
-.servicios__lista { border-top: 1px solid var(--linea-rosa); }
-
-.servicio {
-  display: grid;
-  grid-template-columns: 6.25rem minmax(0, 1fr);
-  grid-template-rows: auto auto;
-  column-gap: 1.1rem;
-  padding-block: 1.1rem;
-  border-bottom: 1px solid var(--linea-rosa);
-}
+.servicios__lista { display: grid; gap: 2.5rem; }
 
 .servicio__foto {
-  grid-row: 1 / 3;
-  width: 6.25rem;
-  aspect-ratio: 4 / 5;
+  width: 100%;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 10px;
+  margin-bottom: 1.1rem;
+  border-radius: var(--radio);
 }
-.servicio__foto--ramos { object-position: 50% 62%; }
+.servicio__foto--plantas { object-position: 50% 35%; }
+.servicio__foto--ramos { object-position: 50% 52%; }
 
-.servicio h3 {
-  align-self: end;
-  color: var(--verde);
-  font-size: 1.5rem;
-  line-height: 1.05;
-}
-.servicio p {
-  align-self: start;
-  margin-top: .4rem;
-  color: var(--tinta-suave);
-  font-size: .9375rem;
-  line-height: 1.45;
-}
+.servicio h3 { margin-bottom: .45rem; color: var(--verde); font-size: 1.75rem; }
+.servicio p { max-width: 30rem; color: var(--tinta-suave); }
 
-@media (min-width: 860px) {
-  .servicio {
-    grid-template-columns: 12rem minmax(0, 1.15fr) minmax(0, 1fr);
-    grid-template-rows: auto;
-    column-gap: clamp(1.5rem, 3vw, 3rem);
-    align-items: center;
-    padding-block: 1.25rem;
-  }
-  .servicio__foto { grid-row: auto; width: 12rem; aspect-ratio: 4 / 3; }
-  .servicio h3 { align-self: center; font-size: clamp(1.875rem, 1.2rem + 1.3vw, 2.5rem); }
-  .servicio p { align-self: center; margin: 0; max-width: 30ch; font-size: 1.0625rem; }
+@media (min-width: 700px) {
+  .servicios__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  .servicio__foto { aspect-ratio: 4 / 5; }
+  /* En vertical cabe el rótulo de Blume que se ve en el cristal */
+  .servicio__foto--ramos { object-position: 50% 0; }
 }
+@media (min-width: 1024px) { .servicios__lista { gap: 2.5rem; } }
 
-/* Cómo te lo llevas: tarjeta verde dentro del bloque rosa */
+/* Cómo te lo llevas: compra en tienda, domicilio o recogida */
 .entrega {
   display: grid;
   gap: 1.5rem;
-  margin-top: 2.5rem;
-  padding: 1.75rem 1.5rem;
-  border-radius: var(--radio);
-  background: var(--verde);
-  color: var(--salvia);
+  margin-top: 3rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--linea-rosa);
 }
-.entrega__titulo { color: var(--rosa); font-size: 1.75rem; }
-.entrega__opciones { display: grid; gap: 1.1rem; }
-.entrega__opciones li { display: flex; align-items: flex-start; gap: .9rem; line-height: 1.45; }
-.entrega__opciones strong { display: block; color: var(--rosa-claro); font-weight: 600; }
-.entrega__icono { width: 1.75rem; height: 1.75rem; flex: none; color: var(--rosa); }
-.entrega__nota {
-  padding-top: 1.25rem;
-  border-top: 1px solid var(--linea-verde);
-  color: var(--rosa-claro);
-}
+.entrega__titulo { color: var(--verde); font-size: 1.75rem; }
+.entrega__opciones { display: grid; gap: 1.25rem; }
+.entrega__opciones li { display: flex; align-items: flex-start; gap: .9rem; color: var(--tinta-suave); line-height: 1.45; }
+.entrega__opciones strong { display: block; color: var(--tinta); font-weight: 600; }
+.entrega__icono { width: 2rem; height: 2rem; flex: none; color: var(--verde); }
 .entrega__nota a {
-  color: var(--rosa);
+  color: var(--verde);
   font-weight: 600;
   text-decoration-thickness: 1px;
   text-underline-offset: .25em;
@@ -490,28 +422,34 @@ a { color: inherit; }
 }
 
 @media (min-width: 700px) {
-  .entrega { padding: 2.25rem 2.5rem; gap: 1.75rem; }
-  .entrega__opciones { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+  .entrega__opciones { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+}
+/* Escritorio: título a la izquierda y opciones a la derecha; la nota de
+   encargos, debajo y alineada con el título */
+@media (min-width: 1024px) {
+  .entrega { grid-template-columns: 13rem minmax(0, 1fr); column-gap: 2rem; align-items: start; }
+  .entrega__nota { grid-column: 1 / -1; }
 }
 
 
 /* 9. Galería -------------------------------------------------- */
 
-.galeria h2 { margin-bottom: 0; color: var(--rosa); }
-.galeria__ayuda { margin-top: .6rem; color: var(--salvia); }
+.galeria h2 { color: var(--rosa); }
 
 .galeria__cabeza {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 1.5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.25rem;
 }
+.galeria__cabeza .seccion__cabeza { margin-bottom: 0; }
+.galeria__ayuda { margin-top: .6rem; color: var(--salvia); }
 
-/* En móvil, la tira se mueve con el dedo: las flechas solo desde tableta */
-.galeria__flechas { display: none; flex: none; gap: .5rem; }
+.galeria__flechas { display: flex; flex: none; gap: .5rem; }
+.galeria__flechas[hidden] { display: none; }
+
 @media (min-width: 768px) {
-  .galeria__flechas { display: flex; }
-  .galeria__flechas[hidden] { display: none; }
+  .galeria__cabeza { flex-direction: row; align-items: flex-end; justify-content: space-between; }
 }
 
 /* Tira que sigue al dedo: cada foto conserva su proporción */
@@ -519,7 +457,7 @@ a { color: inherit; }
   --borde: max(var(--margen), (100% - var(--ancho)) / 2);
   display: flex;
   gap: .75rem;
-  padding: 1.75rem var(--borde) .5rem;
+  padding: 2rem var(--borde) .75rem;
   overflow-x: auto;
   overscroll-behavior-x: contain;
   scroll-snap-type: x mandatory;
@@ -531,14 +469,14 @@ a { color: inherit; }
 
 .galeria__foto {
   display: block;
-  height: 17rem;
+  height: 21rem;
   overflow: hidden;
   border-radius: var(--radio);
 }
 .galeria__foto img {
   width: auto;
   height: 100%;
-  max-width: min(80vw, 32rem);
+  max-width: min(82vw, 36rem);
   object-fit: cover;
 }
 
@@ -546,7 +484,7 @@ a { color: inherit; }
 .galeria__progreso {
   position: relative;
   height: 2px;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   border-radius: 2px;
   background: var(--linea-verde);
   overflow: hidden;
@@ -562,16 +500,16 @@ a { color: inherit; }
 }
 
 @media (min-width: 768px) {
-  .galeria__pista { gap: 1rem; padding-top: 2.25rem; }
-  .galeria__foto { height: 22rem; }
+  .galeria__pista { gap: 1rem; }
+  .galeria__foto { height: 27rem; }
 }
 
 
 /* 10. Contacto y horario -------------------------------------- */
 
-.contacto__rejilla { display: grid; gap: 2.5rem; }
+.contacto__rejilla { display: grid; gap: 2.75rem; }
 
-.datos { display: grid; gap: 1.5rem; margin: 0 0 2.25rem; }
+.datos { display: grid; gap: 1.5rem; margin: 0 0 2.5rem; }
 .datos dt {
   margin-bottom: .2rem;
   color: var(--tinta-suave);
@@ -601,7 +539,7 @@ address { margin-bottom: 1rem; font-style: normal; }
 .horario { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .horario th,
 .horario td {
-  padding: .75rem 0;
+  padding: .8rem 0;
   border-bottom: 1px solid var(--linea-rosa);
   font-weight: 400;
   text-align: left;
@@ -616,7 +554,7 @@ address { margin-bottom: 1rem; font-style: normal; }
 .horario__y {
   position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
 }
-@media (min-width: 440px) {
+@media (min-width: 420px) {
   .horario__tramo { display: inline; }
   .horario__y { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
 }
@@ -639,16 +577,15 @@ address { margin-bottom: 1rem; font-style: normal; }
 .contacto__mapa iframe {
   display: block;
   width: 100%;
-  height: 18rem;
+  height: 20rem;
   border: 0;
   border-radius: var(--radio);
   background: var(--rosa-claro);
 }
 
 @media (min-width: 900px) {
-  .contacto__rejilla { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(2.5rem, 5vw, 5rem); align-items: start; }
-  .contacto__mapa { position: sticky; top: calc(var(--cabecera) + 1.5rem); }
-  .contacto__mapa iframe { height: 28rem; }
+  .contacto__rejilla { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 4rem; }
+  .contacto__mapa iframe { height: 100%; min-height: 30rem; }
 }
 
 
@@ -786,7 +723,7 @@ address { margin-bottom: 1rem; font-style: normal; }
   html { scroll-behavior: smooth; }
 
   .js .portada__foto img { animation: asentarse 1.8s var(--curva) both; }
-  .js .portada__lugar { animation: subir .9s var(--curva) .1s both; }
+  .js .portada .antetitulo { animation: subir .9s var(--curva) .1s both; }
   .js .portada h1 { animation: subir 1s var(--curva) .18s both; }
 
   @media (hover: hover) {

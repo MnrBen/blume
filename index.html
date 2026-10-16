@@ -76,43 +76,54 @@
 
   <main id="contenido">
 
-    <!-- ===== Portada: en móvil, texto sobre la foto; en escritorio, panel verde y foto ===== -->
+    <!-- ===== Portada: el escaparate de noche; en móvil, foto arriba y texto debajo ===== -->
     <section class="portada" id="inicio" aria-labelledby="portada-titulo">
-      <figure class="portada__foto">
-        <img src="imagenes/exterior1.webp" width="922" height="696" fetchpriority="high"
-             alt="Brezos, pensamientos, romero, tomillo y otras plantas en flor, en cajas de madera a la puerta de la tienda">
-      </figure>
-      <div class="portada__texto">
-        <p class="portada__lugar">Floristería en Errenteria</p>
-        <h1 id="portada-titulo">Las flores de Susana, en el centro de Errenteria</h1>
-        <a class="boton boton--principal" href="tel:+34943501930" data-llamada-portada>
-          <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
-          Llamar al 943 50 19 30
-        </a>
-      </div>
-      <div class="portada__resto">
-        <p class="portada__entrada">Ramos y centros personalizados, plantas naturales y artificiales y una gran variedad de flor seca y preservada.</p>
-        <a class="enlace-flecha" href="#contacto">
-          Horario y cómo llegar
-          <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
-        </a>
+      <div class="portada__interior">
+        <figure class="portada__foto">
+          <img src="imagenes/exterior2.webp" width="880" height="651" fetchpriority="high"
+               alt="Escaparate de Blume de noche, con la luz encendida: rosas, hortensias, plantas colgantes y el logotipo al fondo">
+        </figure>
+        <div class="portada__texto">
+          <p class="antetitulo">
+            <svg class="antetitulo__hoja" aria-hidden="true"><use href="#i-hoja"/></svg>
+            Floristería en Errenteria
+          </p>
+          <h1 id="portada-titulo">Las flores de Susana, en el centro de Errenteria</h1>
+          <p class="portada__entrada">Ramos y centros personalizados, plantas naturales y artificiales y una gran variedad de flor seca y preservada.</p>
+          <div class="portada__acciones">
+            <a class="boton boton--principal" href="tel:+34943501930" data-llamada-portada>
+              <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+              Llamar al 943 50 19 30
+            </a>
+            <a class="enlace-flecha" href="#contacto">
+              Horario y cómo llegar
+              <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ===== Servicios: índice con foto pequeña y cómo llevárselo ===== -->
+    <!-- ===== Servicios: lo que hay en la tienda y cómo llevárselo ===== -->
     <section class="seccion servicios" id="servicios" aria-labelledby="servicios-titulo">
       <div class="contenedor">
-        <h2 id="servicios-titulo">Botánica y diseño floral</h2>
+        <header class="seccion__cabeza">
+          <p class="antetitulo">
+            <svg class="antetitulo__hoja" aria-hidden="true"><use href="#i-hoja"/></svg>
+            Servicios
+          </p>
+          <h2 id="servicios-titulo">Botánica y diseño floral</h2>
+        </header>
 
         <ul class="servicios__lista">
           <li class="servicio">
-            <img class="servicio__foto" src="imagenes/interior1.webp" width="479" height="576" loading="lazy"
+            <img class="servicio__foto servicio__foto--plantas" src="imagenes/interior1.webp" width="479" height="576" loading="lazy"
                  alt="Estanterías de la tienda con orquídeas, palmeras de interior, cactus y otras plantas en maceta">
             <h3>Plantas naturales y artificiales</h3>
             <p>Para tu casa o para regalar. Naturales o artificiales, según lo que busques.</p>
           </li>
           <li class="servicio">
-            <img class="servicio__foto" src="imagenes/flores-secas1.webp" width="926" height="696" loading="lazy"
+            <img class="servicio__foto servicio__foto--seca" src="imagenes/flores-secas1.webp" width="926" height="696" loading="lazy"
                  alt="Composición en blanco y turquesa con flor preservada, espigas y hojas de eucalipto">
             <h3>Flor seca y preservada</h3>
             <p>Una gran variedad de flor seca y preservada, sola o en ramos y centros.</p>
@@ -149,10 +160,14 @@
     <!-- ===== Galería: tira deslizable + visor ===== -->
     <section class="seccion galeria" id="galeria" aria-labelledby="galeria-titulo">
       <div class="contenedor galeria__cabeza">
-        <div>
+        <header class="seccion__cabeza">
+          <p class="antetitulo">
+            <svg class="antetitulo__hoja" aria-hidden="true"><use href="#i-hoja"/></svg>
+            Galería
+          </p>
           <h2 id="galeria-titulo">Ramos, centros y plantas de Blume</h2>
           <p class="galeria__ayuda">Toca una foto para verla en grande.</p>
-        </div>
+        </header>
         <div class="galeria__flechas" data-flechas hidden>
           <button class="boton-icono" type="button" data-pista-anterior aria-label="Fotos anteriores">
             <svg class="icono" aria-hidden="true"><use href="#i-anterior"/></svg>
@@ -164,13 +179,13 @@
       </div>
 
       <ul class="galeria__pista" data-pista>
-        <li><a class="galeria__foto" href="imagenes/ramo-deco1.webp" data-foto>
-          <img src="imagenes/ramo-deco1.webp" width="565" height="575" loading="lazy"
-               alt="Hortensias rosadas en un jarrón de cristal labrado">
-        </a></li>
         <li><a class="galeria__foto" href="imagenes/ramo-boda2.webp" data-foto>
           <img src="imagenes/ramo-boda2.webp" width="529" height="762" loading="lazy"
                alt="Ramo de novia de hortensia blanca y color melocotón, con flor seca, eucalipto y cinta de encaje">
+        </a></li>
+        <li><a class="galeria__foto" href="imagenes/exterior1.webp" data-foto>
+          <img src="imagenes/exterior1.webp" width="922" height="696" loading="lazy"
+               alt="Brezos, pensamientos, romero, tomillo y otras plantas en flor, en cajas de madera a la puerta de la tienda">
         </a></li>
         <li><a class="galeria__foto" href="imagenes/flores-secas2.webp" data-foto>
           <img src="imagenes/flores-secas2.webp" width="476" height="573" loading="lazy"
@@ -180,13 +195,13 @@
           <img src="imagenes/ramo-deco2.webp" width="531" height="758" loading="lazy"
                alt="Gran centro de flores en colores vivos, en una copa de cristal sobre el mostrador">
         </a></li>
+        <li><a class="galeria__foto" href="imagenes/ramo-deco1.webp" data-foto>
+          <img src="imagenes/ramo-deco1.webp" width="565" height="575" loading="lazy"
+               alt="Hortensias rosadas en un jarrón de cristal labrado">
+        </a></li>
         <li><a class="galeria__foto" href="imagenes/plantas1.webp" data-foto>
           <img src="imagenes/plantas1.webp" width="516" height="926" loading="lazy"
                alt="Palmera, helecho y otras plantas verdes en maceta">
-        </a></li>
-        <li><a class="galeria__foto" href="imagenes/exterior2.webp" data-foto>
-          <img src="imagenes/exterior2.webp" width="880" height="651" loading="lazy"
-               alt="Escaparate de Blume de noche, con la luz encendida: rosas, hortensias, plantas colgantes y el logotipo al fondo">
         </a></li>
         <li><a class="galeria__foto" href="imagenes/flores-secas3.webp" data-foto>
           <img src="imagenes/flores-secas3.webp" width="473" height="572" loading="lazy"
@@ -202,7 +217,13 @@
     <section class="seccion contacto" id="contacto" aria-labelledby="contacto-titulo">
       <div class="contenedor contacto__rejilla">
         <div class="contacto__datos">
-          <h2 id="contacto-titulo">Ven a vernos o llámanos</h2>
+          <header class="seccion__cabeza">
+            <p class="antetitulo">
+              <svg class="antetitulo__hoja" aria-hidden="true"><use href="#i-hoja"/></svg>
+              Horario y contacto
+            </p>
+            <h2 id="contacto-titulo">Ven a vernos o llámanos</h2>
+          </header>
 
           <dl class="datos">
             <div class="datos__fila">
@@ -272,8 +293,8 @@
   <!-- ===== Visor de fotos (lo rellena main.js) ===== -->
   <dialog class="visor" aria-label="Fotos de Blume en grande" data-visor>
     <figure class="visor__figura">
-      <div class="visor__marco">
-        <img class="visor__img" src="imagenes/ramo-deco1.webp" width="565" height="575" loading="lazy" alt="" data-visor-img>
+      <div class="visor__marco" data-visor-marco>
+        <img class="visor__img" src="imagenes/ramo-boda2.webp" width="529" height="762" loading="lazy" alt="" data-visor-img>
       </div>
       <figcaption class="visor__pie" aria-live="polite">
         <span data-visor-texto></span>

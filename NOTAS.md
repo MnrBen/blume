@@ -24,17 +24,17 @@ Origen: historias destacadas de Instagram de la tienda. **Confirmar con Susana e
 permiso para usarlas** (y si alguna es de un fotógrafo).
 
 Todas son pequeñas (la mayor, 926 px de ancho). Por eso ninguna se muestra a
-pantalla completa en escritorio: la portada va a media pantalla, en móvil nunca
-pasa de 696 px de alto (el de la foto) y la galería va a 22 rem de alto. Si hay originales más grandes, conviene pedirlos.
+pantalla completa en escritorio: la portada va a media pantalla y la galería a
+27 rem de alto. Si hay originales más grandes, conviene pedirlos.
 
 | Foto | Uso | Observaciones |
 |---|---|---|
-| `exterior1` | Portada | La más luminosa: el expositor de la entrada a pleno color. Caja con la palabra «Holland» (es la marca de la caja, no otro negocio). |
+| `exterior2` | Portada | Escaparate de noche con el rótulo. Pequeña pegatina roja en la esquina superior izquierda. |
 | `interior1` | Servicios · plantas | Sin problemas. |
 | `flores-secas1` | Servicios · flor seca | Sin problemas. |
 | `ramo-boda1` | Servicios · ramos | Se ve una mano con pulsera y, en el reflejo del cristal, el interior. Sin cara. |
 | `ramo-boda2` | Galería | Brazo con un **tatuaje visible**: puede identificar a la persona. Pedir permiso o cambiarla. |
-| `exterior2` | Galería | Escaparate de noche con el rótulo. Pequeña pegatina roja en la esquina superior izquierda. |
+| `exterior1` | Galería | El expositor de la entrada a pleno color. Caja con la palabra «Holland» (es la marca de la caja, no otro negocio). |
 | `flores-secas2`, `flores-secas3`, `ramo-deco1`, `ramo-deco2`, `plantas1` | Galería | Sin problemas. |
 | `ramo-boda3` | No usada | Muy parecida a `ramo-boda2`; persona de cuerpo parcial. |
 | `ramo-deco3` | No usada | Es el **interior de una vivienda particular** (privacidad) y repite el centro de `ramo-deco2`. |
