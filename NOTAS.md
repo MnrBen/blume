@@ -29,7 +29,7 @@ pantalla completa en escritorio: la portada va a media pantalla y la galería a
 
 | Foto | Uso | Observaciones |
 |---|---|---|
-| `exterior2` | Portada | Escaparate de noche con el rótulo. Pequeña pegatina roja en la esquina superior izquierda. |
+| `exterior2` | Portada | Escaparate de noche con el rótulo. Las pegatinas de otro cartel (esquina superior izquierda) quedan fuera del encuadre: la web recorta 55 px por la izquierda sin tocar el archivo. |
 | `interior1` | Servicios · plantas | Sin problemas. |
 | `ramo-deco1` | Servicios · ramos y centros | Sin problemas. |
 | `flores-secas2` | Servicios · flor seca (última tarjeta) | Sin problemas. |

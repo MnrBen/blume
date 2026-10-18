@@ -1,9 +1,9 @@
 /* =============================================================
    Blume · Floristería — comportamiento de la demo (sin librerías)
    -------------------------------------------------------------
-   1. Marca de JS        4. Galería: tira deslizable
-   2. Cabecera           5. Visor de fotos
-   3. Horario de hoy     6. Utilidades
+   1. Marca de JS        3. Galería: tira deslizable
+   2. Horario de hoy     4. Visor de fotos
+                         5. Utilidades
    Todo es mejora progresiva: sin JS se ve todo el contenido, cada
    foto de la galería se abre como enlace y el horario sale completo.
    ============================================================= */
@@ -16,38 +16,13 @@
 document.documentElement.classList.add('js');
 
 document.addEventListener('DOMContentLoaded', () => {
-  iniciarCabecera();
   marcarHoy();
   const enlacesFotos = iniciarGaleria();
   iniciarVisor(enlacesFotos);
 });
 
 
-/* 2. Cabecera -------------------------------------------------
-   Mientras el botón «Llamar» de la portada se ve entero, el de la
-   cabecera se aparta para no repetir dos llamadas en la misma pantalla.
-   En cuanto deja de verse, el de la cabecera vuelve: la llamada siempre
-   queda a mano. */
-function iniciarCabecera() {
-  const cabecera = document.querySelector('[data-cabecera]');
-  const llamadaPortada = document.querySelector('[data-llamada-portada]');
-  if (!cabecera || !llamadaPortada || !('IntersectionObserver' in window)) return;
-
-  let observador;
-  const observar = () => {
-    if (observador) observador.disconnect();
-    observador = new IntersectionObserver(([entrada]) => {
-      cabecera.classList.toggle('cabecera--portada-visible', entrada.isIntersecting);
-    }, { rootMargin: `-${cabecera.offsetHeight}px 0px 0px 0px`, threshold: 1 });
-    observador.observe(llamadaPortada);
-  };
-
-  observar();
-  window.addEventListener('resize', retrasar(observar, 200));
-}
-
-
-/* 3. Horario de hoy -------------------------------------------
+/* 2. Horario de hoy -------------------------------------------
    Marca la fila del día actual con la hora de Errenteria (Europe/Madrid),
    aunque quien mira esté en otra zona horaria. No dice «abierto» ni
    «cerrado»: los festivos no los sabemos. */
@@ -74,7 +49,7 @@ function marcarHoy() {
 }
 
 
-/* 4. Galería: tira deslizable ---------------------------------
+/* 3. Galería: tira deslizable ---------------------------------
    La tira se desliza sola con el dedo (scroll nativo con imán). Las
    flechas son para ratón y teclado: avanzan casi una pantalla. */
 function iniciarGaleria() {
@@ -127,7 +102,7 @@ function iniciarGaleria() {
 }
 
 
-/* 5. Visor de fotos -------------------------------------------
+/* 4. Visor de fotos -------------------------------------------
    <dialog> modal: Esc cierra, el foco queda dentro y vuelve a la foto
    de la que se partió. Flechas del teclado, botones y deslizar con el
    dedo (la foto sigue al dedo y, si se suelta lejos, pasa a la otra). */
@@ -249,7 +224,7 @@ function iniciarVisor(enlaces) {
 }
 
 
-/* 6. Utilidades ----------------------------------------------- */
+/* 5. Utilidades ----------------------------------------------- */
 function retrasar(funcion, espera) {
   let temporizador;
   return (...args) => {
