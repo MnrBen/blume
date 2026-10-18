@@ -11,8 +11,8 @@
    Mobile-first: estilos base para móvil y min-width para más ancho.
 
    Reparto de la paleta:
-   - crema: fondo principal (portada y contacto); rosa: fondo alterno
-     (servicios); eucalipto: superficie de la galería; bosque: pie.
+   - crema y rosa: fondos alternos de las secciones (crema, rosa, crema,
+     rosa); bosque: pie; eucalipto: la hoja del pie.
    - kraft: etiquetas (antetítulos, «Hoy»); kraft claro: bloque de pedido.
    - tinta: titulares y texto; eucalipto oscuro: hoja y detalles.
    - baya: solo acciones (llamar, teléfono, enlaces) y siempre sobre fondo
@@ -215,7 +215,7 @@ a { color: inherit; }
 .enlace-flecha .icono { transition: transform .3s var(--curva); }
 .enlace-flecha:hover .icono { transform: translateX(4px); }
 
-/* Botones redondos de flecha (galería, sobre eucalipto: en tinta) */
+/* Botones redondos de flecha (galería): en tinta, secundarios */
 .boton-icono {
   display: inline-grid;
   place-items: center;
@@ -366,12 +366,12 @@ a { color: inherit; }
 
 /* 7. Secciones comunes ---------------------------------------- */
 
-/* Fondos: crema (portada) · rosa (servicios) · eucalipto (galería) ·
-   crema (contacto) · bosque (pie). Nunca dos iguales seguidos. */
+/* Fondos: crema (portada) · rosa (servicios) · crema (galería) ·
+   rosa (contacto) · bosque (pie). Nunca dos iguales seguidos. */
 .seccion { padding-block: 3.5rem; }
 .servicios { background: var(--rosa); }
-.galeria { --foco: var(--tinta); background: var(--eucalipto); }
-.contacto { background: var(--crema); }
+.galeria { background: var(--crema); }
+.contacto { background: var(--rosa); }
 
 .seccion__cabeza { margin-bottom: 1.75rem; }
 .seccion h2 {
@@ -451,7 +451,6 @@ a { color: inherit; }
 
 /* 9. Galería -------------------------------------------------- */
 
-/* Sobre eucalipto todo el texto va en tinta (el secundario no llega) */
 .galeria__cabeza {
   display: flex;
   flex-direction: column;
@@ -459,7 +458,7 @@ a { color: inherit; }
   gap: 1.25rem;
 }
 .galeria__cabeza .seccion__cabeza { margin-bottom: 0; }
-.galeria__ayuda { margin-top: .5rem; color: var(--tinta); }
+.galeria__ayuda { margin-top: .5rem; color: var(--tinta-suave); }
 
 .galeria__flechas { display: flex; flex: none; gap: .5rem; }
 .galeria__flechas[hidden] { display: none; }
@@ -596,7 +595,7 @@ address { margin-bottom: 1rem; font-style: normal; }
   height: 20rem;
   border: 0;
   border-radius: var(--radio);
-  background: var(--eucalipto);
+  background: var(--kraft-claro);   /* mientras carga el mapa */
 }
 
 @media (min-width: 900px) {
