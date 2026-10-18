@@ -9,9 +9,10 @@
    6. Portada           12. Visor de fotos
                         13. Movimiento
    Mobile-first: estilos base para móvil y min-width para más ancho.
-   Fondos claros con color: rosa de hortensia muy claro y salvia clara,
-   alternados. El verde del logotipo de Blume queda como acento: titulares,
-   botones, enlaces y el pie.
+   Fondos claros con color: rosa de hortensia muy claro y rosa empolvado,
+   alternados. El acento es un vino rosado (el granate de las rosas
+   preservadas y del eucalipto rojizo de los ramos): titulares, botones,
+   enlaces y el pie.
    ============================================================= */
 
 
@@ -19,17 +20,18 @@
 
 :root {
   --rosa-claro: #fdf2ee;        /* fondo base: hortensia rosada muy clara */
-  --salvia-claro: #e6efe9;      /* fondo alterno: hoja de eucalipto muy clara */
-  --rosa: #f4d4cf;              /* detalles sobre el verde del pie */
-  --verde: #13684d;             /* el verde del rótulo: titulares y acciones */
-  --verde-hover: #0e5640;
-  --tinta: #1d2b26;             /* texto */
-  --tinta-suave: #4a5a53;
-  --salvia-texto: #d2e4da;      /* texto secundario sobre el verde del pie */
-  --linea: rgb(19 104 77 / .18);
+  --rosa-empolvado: #f6e2dc;    /* fondo alterno, un punto más de rosa */
+  --rosa: #f4d4cf;              /* detalles sobre el vino del pie */
+  --vino: #8a2c45;              /* granate de las rosas preservadas: titulares y acciones */
+  --vino-hover: #72223a;
+  --vino-hondo: #4f1a29;        /* pie */
+  --tinta: #2f2124;             /* texto, cálido */
+  --tinta-suave: #6a5257;
+  --texto-pie: #ecd3d6;         /* texto secundario sobre el pie */
+  --linea: rgb(138 44 69 / .18);
   --linea-pie: rgb(253 242 238 / .25);
   --terracota: #9a3f22;         /* marcadores de dato pendiente */
-  --foco: var(--verde);
+  --foco: var(--vino);
 
   --f-titulo: "Gloock", Georgia, serif;
   --f-texto: "Albert Sans", "Segoe UI", system-ui, sans-serif;
@@ -71,7 +73,7 @@ img { display: block; max-width: 100%; height: auto; }
 
 h1, h2, h3 {
   margin: 0;
-  color: var(--verde);
+  color: var(--vino);
   font-family: var(--f-titulo);
   font-weight: 400;
   line-height: 1.08;
@@ -117,7 +119,7 @@ a { color: inherit; }
   min-height: 2.75rem;
   padding: .5rem 1rem;
   border-radius: 999px;
-  background: var(--verde);
+  background: var(--vino);
   color: var(--rosa-claro);
   font-weight: 600;
 }
@@ -129,7 +131,7 @@ a { color: inherit; }
   align-items: center;
   gap: .45rem;
   margin-bottom: .75rem;
-  color: var(--verde);
+  color: var(--vino);
   font-size: .875rem;
   font-weight: 600;
   line-height: 1.3;
@@ -171,11 +173,11 @@ a { color: inherit; }
   transition: background-color .25s, color .25s, border-color .25s, opacity .3s, visibility .3s;
 }
 
-/* La acción principal (llamar) es siempre verde relleno */
+/* La acción principal (llamar) es siempre vino relleno */
 .boton--principal,
-.boton--cabecera { background: var(--verde); color: var(--rosa-claro); }
+.boton--cabecera { background: var(--vino); color: var(--rosa-claro); }
 .boton--principal:hover,
-.boton--cabecera:hover { background: var(--verde-hover); }
+.boton--cabecera:hover { background: var(--vino-hover); }
 
 .boton--cabecera {
   min-height: 2.75rem;
@@ -184,9 +186,9 @@ a { color: inherit; }
 }
 .boton--cabecera .icono { width: 1.1rem; height: 1.1rem; }
 
-/* Secundario: contorno verde */
-.boton--secundario { border-color: var(--verde); color: var(--verde); }
-.boton--secundario:hover { background: var(--verde); color: var(--rosa-claro); }
+/* Secundario: contorno vino */
+.boton--secundario { border-color: var(--vino); color: var(--vino); }
+.boton--secundario:hover { background: var(--vino); color: var(--rosa-claro); }
 
 /* Enlace de texto con flecha que avanza un poco al pasar por encima */
 .enlace-flecha {
@@ -194,7 +196,7 @@ a { color: inherit; }
   align-items: center;
   gap: .5rem;
   min-height: 2.75rem;
-  color: var(--verde);
+  color: var(--vino);
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -213,11 +215,11 @@ a { color: inherit; }
   border: 1.5px solid var(--linea);
   border-radius: 50%;
   background: transparent;
-  color: var(--verde);
+  color: var(--vino);
   cursor: pointer;
   transition: border-color .25s, background-color .25s, color .25s, opacity .25s;
 }
-.boton-icono:hover:not([aria-disabled="true"]) { border-color: var(--verde); background: var(--verde); color: var(--rosa-claro); }
+.boton-icono:hover:not([aria-disabled="true"]) { border-color: var(--vino); background: var(--vino); color: var(--rosa-claro); }
 .boton-icono[aria-disabled="true"] { opacity: .35; cursor: default; }
 
 
@@ -249,7 +251,7 @@ a { color: inherit; }
   gap: .4rem;
   min-height: 2.75rem;
   margin-right: auto;
-  color: var(--verde);
+  color: var(--vino);
   text-decoration: none;
 }
 .marca__hoja { width: 1.75rem; height: 1.75rem; flex: none; }
@@ -283,7 +285,7 @@ a { color: inherit; }
     text-decoration: none;
     transition: color .2s;
   }
-  .cabecera__nav a:hover { color: var(--verde); }
+  .cabecera__nav a:hover { color: var(--vino); }
   .marca__hoja { width: 2rem; height: 2rem; }
   .marca__nombre { font-size: 1.4375rem; }
 }
@@ -353,10 +355,10 @@ a { color: inherit; }
 
 /* 7. Secciones comunes ---------------------------------------- */
 
-/* Fondos: rosa claro (portada) · salvia (servicios) · rosa claro (galería) ·
-   salvia (contacto) · verde (pie). Nunca dos iguales seguidos. */
+/* Fondos: rosa claro (portada) · empolvado (servicios) · rosa claro (galería) ·
+   empolvado (contacto) · vino (pie). Nunca dos iguales seguidos. */
 .seccion { padding-block: 3.5rem; }
-.servicios, .contacto { background: var(--salvia-claro); }
+.servicios, .contacto { background: var(--rosa-empolvado); }
 .galeria { background: var(--rosa-claro); }
 
 .seccion__cabeza { margin-bottom: 1.75rem; }
@@ -384,7 +386,7 @@ a { color: inherit; }
 }
 .servicio__foto--plantas { object-position: 50% 35%; }
 .servicio__foto--seca { object-position: 50% 60%; }
-.servicio__foto--ramos { object-position: 50% 38%; }
+.servicio__foto--ramos { object-position: 50% 22%; }
 
 .servicio h3 { margin-bottom: .4rem; font-size: 1.375rem; }
 .servicio p { max-width: 30rem; color: var(--tinta-suave); }
@@ -393,7 +395,7 @@ a { color: inherit; }
   .servicios__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
   .servicio__foto { aspect-ratio: 4 / 5; }
   .servicio__foto--seca { object-position: 50% 50%; }
-  .servicio__foto--ramos { object-position: 50% 45%; }
+  .servicio__foto--ramos { object-position: 50% 50%; }
 }
 @media (min-width: 1024px) { .servicios__lista { gap: 2.25rem; } }
 
@@ -409,9 +411,9 @@ a { color: inherit; }
 .entrega__opciones { display: grid; gap: 1.1rem; }
 .entrega__opciones li { display: flex; align-items: flex-start; gap: .85rem; color: var(--tinta-suave); line-height: 1.45; }
 .entrega__opciones strong { display: block; color: var(--tinta); font-weight: 600; }
-.entrega__icono { width: 1.75rem; height: 1.75rem; flex: none; color: var(--verde); }
+.entrega__icono { width: 1.75rem; height: 1.75rem; flex: none; color: var(--vino); }
 .entrega__nota a {
-  color: var(--verde);
+  color: var(--vino);
   font-weight: 600;
   text-decoration-thickness: 1px;
   text-underline-offset: .25em;
@@ -490,7 +492,7 @@ a { color: inherit; }
   inset: 0 auto 0 0;
   width: var(--visible, 30%);
   border-radius: 2px;
-  background: var(--verde);
+  background: var(--vino);
   transform: translateX(var(--avance, 0%));
 }
 
@@ -517,7 +519,7 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  color: var(--verde);
+  color: var(--vino);
   font-family: var(--f-titulo);
   font-size: clamp(1.625rem, 1.45rem + .7vw, 2rem);
   line-height: 1;
@@ -525,7 +527,7 @@ a { color: inherit; }
   text-decoration-thickness: 1.5px;
   text-underline-offset: .18em;
 }
-.datos__telefono:hover { color: var(--verde-hover); }
+.datos__telefono:hover { color: var(--vino-hover); }
 
 address { margin-bottom: 1rem; font-style: normal; }
 
@@ -562,7 +564,7 @@ address { margin-bottom: 1rem; font-style: normal; }
   margin-left: .55rem;
   padding: .05rem .55rem;
   border-radius: 999px;
-  background: var(--verde);
+  background: var(--vino);
   color: var(--rosa-claro);
   font-size: .75rem;
   font-weight: 600;
@@ -589,8 +591,8 @@ address { margin-bottom: 1rem; font-style: normal; }
 .pie {
   --foco: var(--rosa-claro);
   padding-block: 2.75rem 2.25rem;
-  background: var(--verde);
-  color: var(--salvia-texto);
+  background: var(--vino-hondo);
+  color: var(--texto-pie);
   font-size: .9375rem;
 }
 .pie__interior { display: grid; gap: 1.5rem; }
@@ -677,7 +679,7 @@ address { margin-bottom: 1rem; font-style: normal; }
 .visor__cuenta {
   display: block;
   margin-top: .3rem;
-  color: var(--verde);
+  color: var(--vino);
   font-size: .8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -693,11 +695,11 @@ address { margin-bottom: 1rem; font-style: normal; }
   border: 1.5px solid var(--linea);
   border-radius: 50%;
   background: var(--rosa-claro);
-  color: var(--verde);
+  color: var(--vino);
   cursor: pointer;
   transition: background-color .2s, color .2s, border-color .2s;
 }
-.visor__boton:hover { border-color: var(--verde); background: var(--verde); color: var(--rosa-claro); }
+.visor__boton:hover { border-color: var(--vino); background: var(--vino); color: var(--rosa-claro); }
 .visor__cerrar { top: .75rem; right: var(--margen); }
 .visor__nav { bottom: 1.25rem; }
 .visor__nav--anterior { left: var(--margen); }

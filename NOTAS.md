@@ -31,10 +31,10 @@ pantalla completa en escritorio: la portada va a media pantalla y la galería a
 |---|---|---|
 | `exterior2` | Portada | Escaparate de noche con el rótulo. Pequeña pegatina roja en la esquina superior izquierda. |
 | `interior1` | Servicios · plantas | Sin problemas. |
-| `flores-secas2` | Servicios · flor seca | Sin problemas. |
-| `ramo-deco2` | Servicios · ramos y centros | Sin problemas. |
+| `ramo-deco1` | Servicios · ramos y centros | Sin problemas. |
+| `flores-secas2` | Servicios · flor seca (última tarjeta) | Sin problemas. |
 | `exterior1` | Galería (1.ª) | El expositor de la entrada a pleno color. Caja con la palabra «Holland» (es la marca de la caja, no otro negocio). |
-| `ramo-deco1`, `plantas1`, `flores-secas3` | Galería | Sin problemas. |
+| `ramo-deco2`, `plantas1`, `flores-secas3` | Galería | Sin problemas. |
 | `ramo-boda2` | Galería (última) | Brazo con un **tatuaje visible**: puede identificar a la persona. Pedir permiso o cambiarla. |
 | `flores-secas1`, `ramo-boda1` | No usadas | Poco vistosas en la revisión con el cliente. `ramo-boda1`: mano con pulsera y reflejo del interior en el cristal. |
 | `ramo-boda3` | No usada | Muy parecida a `ramo-boda2`; persona de cuerpo parcial. |
