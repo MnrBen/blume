@@ -303,9 +303,15 @@ a { color: inherit; }
   margin-inline: auto;
 }
 
-/* Móvil: la foto arriba, a todo lo ancho y con su color real */
+/* Móvil: la foto arriba, a todo lo ancho y con su color real. El encuadre
+   deja fuera los 55 px de la izquierda, donde hay pegatinas de otro cartel */
 .portada__foto { overflow: hidden; }
-.portada__foto img { width: 100%; }
+.portada__foto img {
+  width: 100%;
+  aspect-ratio: 825 / 651;
+  object-fit: cover;
+  object-position: 100% 50%;
+}
 
 .portada__texto { padding: 1.75rem var(--margen) 3rem; }
 
@@ -336,8 +342,8 @@ a { color: inherit; }
 @media (min-width: 600px) and (max-width: 959px) {
   .portada__foto img {
     height: min(50vh, 27rem);
-    object-fit: cover;
-    object-position: 50% 40%;
+    aspect-ratio: auto;
+    object-position: 100% 40%;
   }
 }
 
@@ -387,7 +393,8 @@ a { color: inherit; }
   border-radius: var(--radio);
 }
 .servicio__foto--plantas { object-position: 50% 35%; }
-.servicio__foto--ramos { object-position: 50% 52%; }
+.servicio__foto--seca { object-position: 50% 60%; }
+.servicio__foto--ramos { object-position: 50% 22%; }
 
 .servicio h3 { margin-bottom: .45rem; color: var(--verde); font-size: 1.75rem; }
 .servicio p { max-width: 30rem; color: var(--tinta-suave); }
@@ -395,8 +402,8 @@ a { color: inherit; }
 @media (min-width: 700px) {
   .servicios__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
   .servicio__foto { aspect-ratio: 4 / 5; }
-  /* En vertical cabe el rótulo de Blume que se ve en el cristal */
-  .servicio__foto--ramos { object-position: 50% 0; }
+  .servicio__foto--seca { object-position: 50% 50%; }
+  .servicio__foto--ramos { object-position: 50% 50%; }
 }
 @media (min-width: 1024px) { .servicios__lista { gap: 2.5rem; } }
 
