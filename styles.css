@@ -9,31 +9,36 @@
    6. Portada           12. Visor de fotos
                         13. Movimiento
    Mobile-first: estilos base para móvil y min-width para más ancho.
-   Fondos claros con color: rosa de hortensia muy claro y rosa empolvado,
-   alternados. Dos acentos con papel fijo:
-   - verde musgo (identidad: titulares, marca, antetítulos, iconos);
-   - vino rosado, el granate de las rosas preservadas (acciones: botones,
-     teléfono, enlaces, flechas) y el pie.
+
+   Reparto de la paleta:
+   - crema: fondo principal (portada y contacto); rosa: fondo alterno
+     (servicios); eucalipto: superficie de la galería; bosque: pie.
+   - kraft: etiquetas (antetítulos, «Hoy»); kraft claro: bloque de pedido.
+   - tinta: titulares y texto; eucalipto oscuro: hoja y detalles.
+   - baya: solo acciones (llamar, teléfono, enlaces) y siempre sobre fondo
+     claro; nunca junto a los verdes.
    ============================================================= */
 
 
 /* 1. Variables ------------------------------------------------ */
 
 :root {
-  --rosa-claro: #fdf2ee;        /* fondo base: hortensia rosada muy clara */
-  --rosa-empolvado: #f6e2dc;    /* fondo alterno, un punto más de rosa */
-  --rosa: #f4d4cf;              /* detalles sobre el vino del pie */
-  --verde: #3a5f34;             /* verde musgo: titulares e identidad */
-  --vino: #8a2c45;              /* granate de las rosas preservadas: acciones */
-  --vino-hover: #72223a;
-  --vino-hondo: #4f1a29;        /* pie */
-  --tinta: #2f2124;             /* texto, cálido */
-  --tinta-suave: #6a5257;
-  --texto-pie: #ecd3d6;         /* texto secundario sobre el pie */
-  --linea: rgb(138 44 69 / .18);
-  --linea-pie: rgb(253 242 238 / .25);
-  --terracota: #9a3f22;         /* marcadores de dato pendiente */
-  --foco: var(--vino);
+  --crema: #f6f1e8;             /* fondo principal */
+  --tinta: #2e2b26;             /* texto y titulares */
+  --tinta-suave: #5a544b;       /* texto secundario (no sobre eucalipto) */
+  --kraft: #dcc7a6;             /* papel de envolver: etiquetas */
+  --kraft-claro: #ebdfcb;       /* bloques */
+  --eucalipto: #a9b8ac;         /* superficies */
+  --eucalipto-oscuro: #5b6f61;  /* 4,8:1 sobre crema: hoja y detalles */
+  --bosque: #2f3d33;            /* sección oscura: pie */
+  --baya: #8e3a4e;              /* acción principal (llamar) */
+  --baya-oscura: #722c3e;
+  --rosa: #f2e1dc;              /* rosa empolvado: fondo alterno */
+  --blanco: #ffffff;
+
+  --linea: rgb(46 43 38 / .15);
+  --linea-pie: rgb(235 223 203 / .22);
+  --foco: var(--baya);
 
   --f-titulo: "Gloock", Georgia, serif;
   --f-texto: "Albert Sans", "Segoe UI", system-ui, sans-serif;
@@ -63,7 +68,7 @@ html {
 
 body {
   margin: 0;
-  background: var(--rosa-claro);
+  background: var(--crema);
   color: var(--tinta);
   font-family: var(--f-texto);
   font-size: 1.0625rem;
@@ -75,7 +80,7 @@ img { display: block; max-width: 100%; height: auto; }
 
 h1, h2, h3 {
   margin: 0;
-  color: var(--verde);
+  color: var(--tinta);
   font-family: var(--f-titulo);
   font-weight: 400;
   line-height: 1.08;
@@ -121,25 +126,28 @@ a { color: inherit; }
   min-height: 2.75rem;
   padding: .5rem 1rem;
   border-radius: 999px;
-  background: var(--vino);
-  color: var(--rosa-claro);
+  background: var(--baya);
+  color: var(--crema);
   font-weight: 600;
 }
 .saltar:focus { top: .5rem; }
 
-/* Antetítulo de cada sección, con la hoja de palmera del rótulo */
+/* Antetítulo: etiqueta de papel kraft con la hoja de palmera del rótulo */
 .antetitulo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: .45rem;
-  margin-bottom: .75rem;
-  color: var(--verde);
-  font-size: .875rem;
+  gap: .4rem;
+  margin-bottom: .9rem;
+  padding: .3rem .75rem .3rem .5rem;
+  border-radius: 4px;
+  background: var(--kraft);
+  color: var(--tinta);
+  font-size: .8125rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: .02em;
 }
-.antetitulo__hoja { width: 1.5rem; height: 1.5rem; flex: none; }
+.antetitulo__hoja { width: 1.35rem; height: 1.35rem; flex: none; color: var(--eucalipto-oscuro); }
 
 .solo-escritorio { display: none; }
 @media (min-width: 768px) {
@@ -153,7 +161,7 @@ a { color: inherit; }
   padding: .35rem .75rem;
   border: 1px dashed currentColor;
   border-radius: 8px;
-  color: var(--terracota);
+  color: var(--tinta-suave);
   font-size: .875rem;
   line-height: 1.4;
 }
@@ -175,11 +183,11 @@ a { color: inherit; }
   transition: background-color .25s, color .25s, border-color .25s;
 }
 
-/* La acción principal (llamar) es siempre vino relleno */
+/* La acción principal (llamar) es siempre baya relleno */
 .boton--principal,
-.boton--cabecera { background: var(--vino); color: var(--rosa-claro); }
+.boton--cabecera { background: var(--baya); color: var(--crema); }
 .boton--principal:hover,
-.boton--cabecera:hover { background: var(--vino-hover); }
+.boton--cabecera:hover { background: var(--baya-oscura); }
 
 .boton--cabecera {
   min-height: 2.75rem;
@@ -188,9 +196,9 @@ a { color: inherit; }
 }
 .boton--cabecera .icono { width: 1.1rem; height: 1.1rem; }
 
-/* Secundario: contorno vino */
-.boton--secundario { border-color: var(--vino); color: var(--vino); }
-.boton--secundario:hover { background: var(--vino); color: var(--rosa-claro); }
+/* Secundario: contorno baya */
+.boton--secundario { border-color: var(--baya); color: var(--baya); }
+.boton--secundario:hover { background: var(--baya); color: var(--crema); }
 
 /* Enlace de texto con flecha que avanza un poco al pasar por encima */
 .enlace-flecha {
@@ -198,7 +206,7 @@ a { color: inherit; }
   align-items: center;
   gap: .5rem;
   min-height: 2.75rem;
-  color: var(--vino);
+  color: var(--baya);
   font-weight: 600;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -207,21 +215,21 @@ a { color: inherit; }
 .enlace-flecha .icono { transition: transform .3s var(--curva); }
 .enlace-flecha:hover .icono { transform: translateX(4px); }
 
-/* Botones redondos de flecha (galería) */
+/* Botones redondos de flecha (galería, sobre eucalipto: en tinta) */
 .boton-icono {
   display: inline-grid;
   place-items: center;
   width: 3rem;
   height: 3rem;
   padding: 0;
-  border: 1.5px solid var(--linea);
+  border: 1.5px solid rgb(46 43 38 / .4);
   border-radius: 50%;
   background: transparent;
-  color: var(--vino);
+  color: var(--tinta);
   cursor: pointer;
   transition: border-color .25s, background-color .25s, color .25s, opacity .25s;
 }
-.boton-icono:hover:not([aria-disabled="true"]) { border-color: var(--vino); background: var(--vino); color: var(--rosa-claro); }
+.boton-icono:hover:not([aria-disabled="true"]) { border-color: var(--tinta); background: var(--tinta); color: var(--crema); }
 .boton-icono[aria-disabled="true"] { opacity: .35; cursor: default; }
 
 
@@ -231,7 +239,7 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgb(253 242 238 / .94);
+  background: rgb(246 241 232 / .94);
   border-bottom: 1px solid var(--linea);
   -webkit-backdrop-filter: saturate(1.3) blur(10px);
           backdrop-filter: saturate(1.3) blur(10px);
@@ -253,10 +261,10 @@ a { color: inherit; }
   gap: .4rem;
   min-height: 2.75rem;
   margin-right: auto;
-  color: var(--verde);
+  color: var(--tinta);
   text-decoration: none;
 }
-.marca__hoja { width: 1.75rem; height: 1.75rem; flex: none; }
+.marca__hoja { width: 1.75rem; height: 1.75rem; flex: none; color: var(--eucalipto-oscuro); }
 .marca__nombre {
   margin: 0;
   font-family: var(--f-titulo);
@@ -286,7 +294,7 @@ a { color: inherit; }
     text-decoration: none;
     transition: color .2s;
   }
-  .cabecera__nav a:hover { color: var(--vino); }
+  .cabecera__nav a:hover { color: var(--tinta); }
   .marca__hoja { width: 2rem; height: 2rem; }
   .marca__nombre { font-size: 1.4375rem; }
 }
@@ -294,7 +302,7 @@ a { color: inherit; }
 
 /* 6. Portada: el escaparate de noche --------------------------- */
 
-.portada { background: var(--rosa-claro); }
+.portada { background: var(--crema); }
 
 .portada__interior {
   display: grid;
@@ -358,11 +366,12 @@ a { color: inherit; }
 
 /* 7. Secciones comunes ---------------------------------------- */
 
-/* Fondos: rosa claro (portada) · empolvado (servicios) · rosa claro (galería) ·
-   empolvado (contacto) · vino (pie). Nunca dos iguales seguidos. */
+/* Fondos: crema (portada) · rosa (servicios) · eucalipto (galería) ·
+   crema (contacto) · bosque (pie). Nunca dos iguales seguidos. */
 .seccion { padding-block: 3.5rem; }
-.servicios, .contacto { background: var(--rosa-empolvado); }
-.galeria { background: var(--rosa-claro); }
+.servicios { background: var(--rosa); }
+.galeria { --foco: var(--tinta); background: var(--eucalipto); }
+.contacto { background: var(--crema); }
 
 .seccion__cabeza { margin-bottom: 1.75rem; }
 .seccion h2 {
@@ -402,21 +411,26 @@ a { color: inherit; }
 }
 @media (min-width: 1024px) { .servicios__lista { gap: 2.25rem; } }
 
-/* Cómo pedir: compra en tienda, domicilio o recogida */
+/* Cómo pedir: bloque de papel kraft con compra en tienda, domicilio o recogida */
 .entrega {
   display: grid;
   gap: 1.25rem;
   margin-top: 2.75rem;
-  padding-top: 2rem;
-  border-top: 1px solid var(--linea);
+  padding: 1.75rem 1.5rem;
+  border-radius: var(--radio);
+  background: var(--kraft-claro);
 }
 .entrega__titulo { font-size: 1.375rem; }
 .entrega__opciones { display: grid; gap: 1.1rem; }
 .entrega__opciones li { display: flex; align-items: flex-start; gap: .85rem; color: var(--tinta-suave); line-height: 1.45; }
 .entrega__opciones strong { display: block; color: var(--tinta); font-weight: 600; }
-.entrega__icono { width: 1.75rem; height: 1.75rem; flex: none; color: var(--verde); }
+.entrega__icono { width: 1.75rem; height: 1.75rem; flex: none; color: var(--eucalipto-oscuro); }
+.entrega__nota {
+  padding-top: 1.1rem;
+  border-top: 1px solid var(--linea);
+}
 .entrega__nota a {
-  color: var(--vino);
+  color: var(--baya);
   font-weight: 600;
   text-decoration-thickness: 1px;
   text-underline-offset: .25em;
@@ -424,6 +438,7 @@ a { color: inherit; }
 }
 
 @media (min-width: 700px) {
+  .entrega { padding: 2rem 2.25rem; }
   .entrega__opciones { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
 }
 /* Escritorio: título a la izquierda y opciones a la derecha; la nota de
@@ -436,6 +451,7 @@ a { color: inherit; }
 
 /* 9. Galería -------------------------------------------------- */
 
+/* Sobre eucalipto todo el texto va en tinta (el secundario no llega) */
 .galeria__cabeza {
   display: flex;
   flex-direction: column;
@@ -443,7 +459,7 @@ a { color: inherit; }
   gap: 1.25rem;
 }
 .galeria__cabeza .seccion__cabeza { margin-bottom: 0; }
-.galeria__ayuda { margin-top: .5rem; color: var(--tinta-suave); }
+.galeria__ayuda { margin-top: .5rem; color: var(--tinta); }
 
 .galeria__flechas { display: flex; flex: none; gap: .5rem; }
 .galeria__flechas[hidden] { display: none; }
@@ -486,7 +502,7 @@ a { color: inherit; }
   height: 2px;
   margin-top: 1rem;
   border-radius: 2px;
-  background: var(--linea);
+  background: rgb(46 43 38 / .2);
   overflow: hidden;
 }
 .galeria__progreso[hidden] { display: none; }
@@ -495,7 +511,7 @@ a { color: inherit; }
   inset: 0 auto 0 0;
   width: var(--visible, 30%);
   border-radius: 2px;
-  background: var(--vino);
+  background: var(--tinta);
   transform: translateX(var(--avance, 0%));
 }
 
@@ -522,7 +538,7 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  color: var(--vino);
+  color: var(--baya);
   font-family: var(--f-titulo);
   font-size: clamp(1.625rem, 1.45rem + .7vw, 2rem);
   line-height: 1;
@@ -530,7 +546,7 @@ a { color: inherit; }
   text-decoration-thickness: 1.5px;
   text-underline-offset: .18em;
 }
-.datos__telefono:hover { color: var(--vino-hover); }
+.datos__telefono:hover { color: var(--baya-oscura); }
 
 address { margin-bottom: 1rem; font-style: normal; }
 
@@ -559,16 +575,16 @@ address { margin-bottom: 1rem; font-style: normal; }
   .horario__y { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
 }
 
-/* El día de hoy (lo marca main.js con la hora de Errenteria) */
+/* El día de hoy (lo marca main.js con la hora de Errenteria): etiqueta kraft */
 .horario .es-hoy th { font-weight: 600; }
 .horario .es-hoy td { color: var(--tinta); }
 .horario__hoy {
   display: inline-block;
   margin-left: .55rem;
-  padding: .05rem .55rem;
-  border-radius: 999px;
-  background: var(--verde);
-  color: var(--rosa-claro);
+  padding: .05rem .5rem;
+  border-radius: 4px;
+  background: var(--kraft);
+  color: var(--tinta);
   font-size: .75rem;
   font-weight: 600;
   vertical-align: .1em;
@@ -580,7 +596,7 @@ address { margin-bottom: 1rem; font-style: normal; }
   height: 20rem;
   border: 0;
   border-radius: var(--radio);
-  background: var(--rosa-claro);
+  background: var(--eucalipto);
 }
 
 @media (min-width: 900px) {
@@ -592,24 +608,24 @@ address { margin-bottom: 1rem; font-style: normal; }
 /* 11. Pie y página legal -------------------------------------- */
 
 .pie {
-  --foco: var(--rosa-claro);
+  --foco: var(--kraft-claro);
   padding-block: 2.75rem 2.25rem;
-  background: var(--vino-hondo);
-  color: var(--texto-pie);
+  background: var(--bosque);
+  color: var(--kraft-claro);
   font-size: .9375rem;
 }
 .pie__interior { display: grid; gap: 1.5rem; }
 
-.pie__marca { display: flex; align-items: center; gap: .6rem; color: var(--rosa); }
-.pie__marca .marca__hoja { width: 2.5rem; height: 2.5rem; }
+.pie__marca { display: flex; align-items: center; gap: .6rem; color: var(--crema); }
+.pie__marca .marca__hoja { width: 2.5rem; height: 2.5rem; color: var(--eucalipto); }
 .pie__marca .marca__nombre { font-size: 1.5rem; }
-.pie__lema { margin-top: .3rem; font-size: .8125rem; font-weight: 500; }
+.pie__lema { margin-top: .3rem; color: var(--kraft); font-size: .8125rem; font-weight: 500; }
 
-.pie a { color: var(--rosa-claro); text-decoration-thickness: 1px; text-underline-offset: .3em; }
+.pie a { color: var(--crema); text-decoration-thickness: 1px; text-underline-offset: .3em; }
 .pie__datos a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .pie__legal { display: flex; flex-wrap: wrap; gap: 0 1.75rem; }
 .pie__legal a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-.pie .pendiente { color: var(--rosa); }
+.pie .pendiente { color: var(--kraft); }
 
 @media (min-width: 1024px) {
   .pie__interior { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 4rem; }
@@ -618,7 +634,7 @@ address { margin-bottom: 1rem; font-style: normal; }
 }
 
 /* Página de textos legales (pendiente) */
-.legal { background: var(--rosa-claro); }
+.legal { background: var(--crema); }
 .legal h1 { margin-bottom: 1.25rem; font-size: clamp(1.75rem, 1.45rem + 1.2vw, 2.375rem); }
 .legal .pendiente { display: inline-block; }
 .legal__bloque { margin-top: 2.25rem; }
@@ -637,7 +653,7 @@ address { margin-bottom: 1rem; font-style: normal; }
   padding: 0;
   border: 0;
   overflow: hidden;
-  background: var(--rosa-claro);
+  background: var(--crema);
   color: var(--tinta);
 }
 .visor::backdrop { background: transparent; }
@@ -682,7 +698,7 @@ address { margin-bottom: 1rem; font-style: normal; }
 .visor__cuenta {
   display: block;
   margin-top: .3rem;
-  color: var(--vino);
+  color: var(--tinta);
   font-size: .8125rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
@@ -695,14 +711,14 @@ address { margin-bottom: 1rem; font-style: normal; }
   width: 3rem;
   height: 3rem;
   padding: 0;
-  border: 1.5px solid var(--linea);
+  border: 1.5px solid rgb(46 43 38 / .3);
   border-radius: 50%;
-  background: var(--rosa-claro);
-  color: var(--vino);
+  background: var(--crema);
+  color: var(--tinta);
   cursor: pointer;
   transition: background-color .2s, color .2s, border-color .2s;
 }
-.visor__boton:hover { border-color: var(--vino); background: var(--vino); color: var(--rosa-claro); }
+.visor__boton:hover { border-color: var(--tinta); background: var(--tinta); color: var(--crema); }
 .visor__cerrar { top: .75rem; right: var(--margen); }
 .visor__nav { bottom: 1.25rem; }
 .visor__nav--anterior { left: var(--margen); }
