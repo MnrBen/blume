@@ -20,14 +20,14 @@
 /* 1. Variables ------------------------------------------------ */
 
 :root {
-  --verde: #0b4a37;             /* verde del rótulo, en profundo */
-  --verde-hondo: #073426;       /* pie y visor */
+  --verde: #235b3f;             /* verde bosque: más ligero y cálido, cerca del logotipo */
+  --verde-hondo: #1a422e;       /* visor, mapa mientras carga y estados hover */
   --rosa: #f4d4cf;              /* hortensia rosada */
   --rosa-claro: #fdeeea;        /* texto sobre verde */
-  --tinta: #0a2f24;             /* texto sobre rosa */
-  --tinta-suave: #3f5c51;
+  --tinta: #0f2e1f;             /* texto sobre rosa */
+  --tinta-suave: #3f5a4d;
   --salvia: #c9ddd4;            /* texto secundario sobre verde */
-  --linea-rosa: rgb(11 74 55 / .2);
+  --linea-rosa: rgb(35 91 63 / .22);
   --linea-verde: rgb(244 212 207 / .24);
   --terracota: #9a3f22;         /* marcadores de dato pendiente */
   --foco: var(--verde);
@@ -605,19 +605,29 @@ address { margin-bottom: 1rem; font-style: normal; }
   color: var(--tinta-suave);
   font-size: .9375rem;
 }
-.pie__interior { display: grid; gap: 1.5rem; justify-items: start; }
+/* Móvil y tableta: una columna, todo centrado */
+.pie__interior { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
 
 /* Logotipo completo de Blume */
 .pie__logo { width: 10.5rem; height: auto; }
 
 .pie a { color: var(--verde); text-decoration-thickness: 1px; text-underline-offset: .3em; }
 .pie__datos a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-.pie__legal { display: flex; flex-wrap: wrap; gap: 0 1.75rem; }
+.pie__legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 1.75rem; }
 .pie__legal a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 
+/* Escritorio: logotipo a la izquierda, datos en el centro y legales a la derecha */
 @media (min-width: 1024px) {
-  .pie__interior { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 4rem; }
+  .pie__interior {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    justify-items: stretch;
+    column-gap: 4rem;
+    text-align: left;
+  }
+  .pie__logo { justify-self: start; }
   .pie__datos { justify-self: center; text-align: center; }
+  .pie__legal { justify-self: end; justify-content: flex-end; }
 }
 
 /* Página de textos legales (pendiente) */
