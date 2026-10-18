@@ -7,7 +7,7 @@ en `index.html` (una sola página) y lleva `noindex` mientras lo sea.
 
 | Dato | Dónde se nota | Qué se ha hecho |
 |---|---|---|
-| **Logotipo original** (SVG o PNG) | Cabecera y pie | Marca provisional: «BLUME» con Gloock y una hoja de palmera dibujada a partir del rótulo que se ve en las fotos. Marcador visible en el pie. |
+| **Logotipo en vectorial** (SVG o PDF) | Cabecera, pie, antetítulos e icono | Se usa el de su foto de perfil de Instagram (`imagenes/logo.webp`, 1400 × 1229, fondo transparente). De él salen `logo-horizontal.webp` (cabecera: palmera + nombre, como el vinilo del escaparate, sin el subtítulo), `logo-pie.webp` (pie), `logo-hoja.webp` (palmera de los antetítulos) e `icono.png` (pestaña). Para la versión real, pedir el original en vectorial y confirmar que la versión horizontal les vale. |
 | Textos legales (aviso legal, privacidad, cookies) | `legal.html` | Página marcada como pendiente. No se ha redactado nada. |
 | Email | — | No aparece en la web. |
 | ¿El teléfono tiene WhatsApp? | — | Es un fijo (943), así que la acción principal es «Llamar». No se ha puesto WhatsApp. |

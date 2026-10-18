@@ -10,8 +10,10 @@
                         13. Movimiento
    Mobile-first: estilos base para móvil y min-width para más ancho.
    Identidad a dos colores: el verde del logotipo de Blume, en profundo,
-   y el rosa de las hortensias, alternados por bloques. La maquetación de
-   las secciones es la de la primera versión de la demo.
+   y el rosa de las hortensias, alternados por bloques empezando en rosa.
+   Los botones toman el color contrario a su fondo. El logotipo es el real
+   (imagenes/logo*.webp). La maquetación de las secciones es la de la
+   primera versión de la demo.
    ============================================================= */
 
 
@@ -44,8 +46,8 @@
 @media (min-width: 768px) { :root { --cabecera: 4.5rem; } }
 @media (min-width: 1024px) { :root { --margen: 2.5rem; } }
 
-/* Bloques oscuros: cambian el color del foco */
-.cabecera, .portada, .galeria, .pie, .visor { --foco: var(--rosa); }
+/* Bloques verdes: cambian el color del foco */
+.servicios, .contacto, .visor { --foco: var(--rosa); }
 
 
 /* 2. Base ----------------------------------------------------- */
@@ -118,13 +120,14 @@ a { color: inherit; }
   min-height: 2.75rem;
   padding: .5rem 1rem;
   border-radius: 999px;
-  background: var(--rosa);
-  color: var(--verde);
+  background: var(--verde);
+  color: var(--rosa-claro);
   font-weight: 600;
 }
 .saltar:focus { top: .5rem; }
 
-/* Antetítulo de cada sección, con la hoja de palmera del rótulo */
+/* Antetítulo de cada sección, con la palmera del logotipo de Blume. La imagen
+   hace de máscara: toma el color del texto (verde sobre rosa, rosa sobre verde) */
 .antetitulo {
   display: flex;
   align-items: center;
@@ -136,9 +139,16 @@ a { color: inherit; }
   line-height: 1.3;
   letter-spacing: .02em;
 }
-.antetitulo__hoja { width: 1.6rem; height: 1.6rem; flex: none; }
-.portada .antetitulo,
-.galeria .antetitulo { color: var(--rosa); }
+.antetitulo__hoja {
+  width: 1.5rem;
+  height: 1.6rem;
+  flex: none;
+  background: currentColor;
+  -webkit-mask: url("imagenes/logo-hoja.webp") center / contain no-repeat;
+          mask: url("imagenes/logo-hoja.webp") center / contain no-repeat;
+}
+.servicios .antetitulo,
+.contacto .antetitulo { color: var(--rosa); }
 
 .solo-escritorio { display: none; }
 @media (min-width: 768px) {
@@ -174,11 +184,12 @@ a { color: inherit; }
   transition: background-color .25s, color .25s, border-color .25s, opacity .3s, visibility .3s;
 }
 
-/* La acción principal (llamar) es siempre rosa sobre verde */
+/* La acción principal (llamar) va en verde relleno: la cabecera y la portada
+   son rosas */
 .boton--principal,
-.boton--cabecera { background: var(--rosa); color: var(--verde); }
+.boton--cabecera { background: var(--verde); color: var(--rosa-claro); }
 .boton--principal:hover,
-.boton--cabecera:hover { background: var(--rosa-claro); }
+.boton--cabecera:hover { background: var(--verde-hondo); }
 
 .boton--cabecera {
   min-height: 2.75rem;
@@ -187,9 +198,9 @@ a { color: inherit; }
 }
 .boton--cabecera .icono { width: 1.1rem; height: 1.1rem; }
 
-/* Secundario, sobre rosa: contorno verde */
-.boton--secundario { border-color: var(--verde); color: var(--verde); }
-.boton--secundario:hover { background: var(--verde); color: var(--rosa); }
+/* Secundario (contacto, sobre verde): contorno rosa */
+.boton--secundario { border-color: var(--rosa); color: var(--rosa); }
+.boton--secundario:hover { background: var(--rosa); color: var(--verde); }
 
 /* Enlace de texto con flecha que avanza un poco al pasar por encima */
 .enlace-flecha {
@@ -205,21 +216,21 @@ a { color: inherit; }
 .enlace-flecha .icono { transition: transform .3s var(--curva); }
 .enlace-flecha:hover .icono { transform: translateX(4px); }
 
-/* Botones redondos de flecha (galería, sobre verde) */
+/* Botones redondos de flecha (galería, sobre rosa) */
 .boton-icono {
   display: inline-grid;
   place-items: center;
   width: 3rem;
   height: 3rem;
   padding: 0;
-  border: 1.5px solid var(--linea-verde);
+  border: 1.5px solid var(--linea-rosa);
   border-radius: 50%;
   background: transparent;
-  color: var(--rosa);
+  color: var(--verde);
   cursor: pointer;
   transition: border-color .25s, background-color .25s, color .25s, opacity .25s;
 }
-.boton-icono:hover:not([aria-disabled="true"]) { border-color: var(--rosa); background: var(--rosa); color: var(--verde); }
+.boton-icono:hover:not([aria-disabled="true"]) { border-color: var(--verde); background: var(--verde); color: var(--rosa); }
 .boton-icono[aria-disabled="true"] { opacity: .35; cursor: default; }
 
 
@@ -229,8 +240,9 @@ a { color: inherit; }
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--verde);
-  color: var(--rosa-claro);
+  background: var(--rosa);
+  color: var(--tinta);
+  border-bottom: 1px solid var(--linea-rosa);
 }
 
 .cabecera__interior {
@@ -246,22 +258,12 @@ a { color: inherit; }
 .marca {
   display: inline-flex;
   align-items: center;
-  gap: .4rem;
   min-height: 2.75rem;
   margin-right: auto;
-  color: var(--rosa);
-  text-decoration: none;
 }
-.marca__hoja { width: 1.75rem; height: 1.75rem; flex: none; }
-.marca__nombre {
-  margin: 0;
-  font-family: var(--f-titulo);
-  font-size: 1.375rem;
-  line-height: 1;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-  padding-top: .08em;
-}
+/* Logotipo de Blume en horizontal (palmera + nombre), como en el vinilo del
+   escaparate; sin el subtítulo, que a este tamaño no se leería */
+.marca__logo { width: auto; height: 2.125rem; }
 
 .cabecera__nav { display: none; }
 
@@ -277,15 +279,14 @@ a { color: inherit; }
     align-items: center;
     min-height: 2.75rem;
     padding-inline: .8rem;
-    color: var(--salvia);
+    color: var(--tinta-suave);
     font-size: .9375rem;
     font-weight: 500;
     text-decoration: none;
     transition: color .2s;
   }
-  .cabecera__nav a:hover { color: var(--rosa); }
-  .marca__hoja { width: 2rem; height: 2rem; }
-  .marca__nombre { font-size: 1.5rem; }
+  .cabecera__nav a:hover { color: var(--verde); }
+  .marca__logo { height: 2.5rem; }
 }
 
 /* Con JS: el botón de la cabecera se aparta mientras se ve el de la portada,
@@ -295,7 +296,7 @@ a { color: inherit; }
 
 /* 6. Portada: el escaparate de noche --------------------------- */
 
-.portada { background: var(--verde); color: var(--rosa-claro); }
+.portada { background: var(--rosa); color: var(--tinta); }
 
 .portada__interior {
   display: grid;
@@ -317,7 +318,7 @@ a { color: inherit; }
 
 .portada h1 {
   max-width: 14ch;
-  color: var(--rosa-claro);
+  color: var(--verde);
   font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.25rem);
   line-height: 1.02;
 }
@@ -325,7 +326,7 @@ a { color: inherit; }
 .portada__entrada {
   max-width: 32rem;
   margin-top: 1rem;
-  color: var(--salvia);
+  color: var(--tinta-suave);
   font-size: 1.125rem;
 }
 
@@ -336,7 +337,7 @@ a { color: inherit; }
   gap: .75rem 1.5rem;
   margin-top: 1.75rem;
 }
-.portada .enlace-flecha { color: var(--rosa); }
+.portada .enlace-flecha { color: var(--verde); }
 
 /* Tableta: foto a lo ancho pero recortada en alto */
 @media (min-width: 600px) and (max-width: 959px) {
@@ -362,11 +363,11 @@ a { color: inherit; }
 
 /* 7. Secciones comunes ---------------------------------------- */
 
-/* Bloques: verde (portada) · rosa (servicios) · verde (galería) ·
-   rosa (contacto) · verde hondo (pie). Nunca dos iguales seguidos. */
+/* Bloques, empezando en rosa: rosa (portada) · verde (servicios) ·
+   rosa (galería) · verde (contacto) · rosa (pie). Nunca dos iguales seguidos. */
 .seccion { padding-block: 3.5rem; }
-.servicios, .contacto { background: var(--rosa); color: var(--tinta); }
-.galeria { background: var(--verde); color: var(--rosa-claro); }
+.servicios, .contacto { background: var(--verde); color: var(--rosa-claro); }
+.galeria { background: var(--rosa); color: var(--tinta); }
 
 .seccion__cabeza { margin-bottom: 2rem; }
 .seccion h2 {
@@ -374,6 +375,8 @@ a { color: inherit; }
   color: var(--verde);
   font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
 }
+.servicios h2,
+.contacto h2 { color: var(--rosa); }
 
 @media (min-width: 768px) {
   .seccion { padding-block: 5rem; }
@@ -396,8 +399,8 @@ a { color: inherit; }
 .servicio__foto--seca { object-position: 50% 60%; }
 .servicio__foto--ramos { object-position: 50% 22%; }
 
-.servicio h3 { margin-bottom: .45rem; color: var(--verde); font-size: 1.75rem; }
-.servicio p { max-width: 30rem; color: var(--tinta-suave); }
+.servicio h3 { margin-bottom: .45rem; color: var(--rosa); font-size: 1.75rem; }
+.servicio p { max-width: 30rem; color: var(--salvia); }
 
 @media (min-width: 700px) {
   .servicios__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
@@ -407,21 +410,21 @@ a { color: inherit; }
 }
 @media (min-width: 1024px) { .servicios__lista { gap: 2.5rem; } }
 
-/* Cómo te lo llevas: compra en tienda, domicilio o recogida */
+/* Cómo pedir: compra en tienda, domicilio o recogida */
 .entrega {
   display: grid;
   gap: 1.5rem;
   margin-top: 3rem;
   padding-top: 2.25rem;
-  border-top: 1px solid var(--linea-rosa);
+  border-top: 1px solid var(--linea-verde);
 }
-.entrega__titulo { color: var(--verde); font-size: 1.75rem; }
+.entrega__titulo { color: var(--rosa); font-size: 1.75rem; }
 .entrega__opciones { display: grid; gap: 1.25rem; }
-.entrega__opciones li { display: flex; align-items: flex-start; gap: .9rem; color: var(--tinta-suave); line-height: 1.45; }
-.entrega__opciones strong { display: block; color: var(--tinta); font-weight: 600; }
-.entrega__icono { width: 2rem; height: 2rem; flex: none; color: var(--verde); }
+.entrega__opciones li { display: flex; align-items: flex-start; gap: .9rem; color: var(--salvia); line-height: 1.45; }
+.entrega__opciones strong { display: block; color: var(--rosa-claro); font-weight: 600; }
+.entrega__icono { width: 2rem; height: 2rem; flex: none; color: var(--rosa); }
 .entrega__nota a {
-  color: var(--verde);
+  color: var(--rosa);
   font-weight: 600;
   text-decoration-thickness: 1px;
   text-underline-offset: .25em;
@@ -441,8 +444,6 @@ a { color: inherit; }
 
 /* 9. Galería -------------------------------------------------- */
 
-.galeria h2 { color: var(--rosa); }
-
 .galeria__cabeza {
   display: flex;
   flex-direction: column;
@@ -450,7 +451,7 @@ a { color: inherit; }
   gap: 1.25rem;
 }
 .galeria__cabeza .seccion__cabeza { margin-bottom: 0; }
-.galeria__ayuda { margin-top: .6rem; color: var(--salvia); }
+.galeria__ayuda { margin-top: .6rem; color: var(--tinta-suave); }
 
 .galeria__flechas { display: flex; flex: none; gap: .5rem; }
 .galeria__flechas[hidden] { display: none; }
@@ -493,7 +494,7 @@ a { color: inherit; }
   height: 2px;
   margin-top: 1rem;
   border-radius: 2px;
-  background: var(--linea-verde);
+  background: var(--linea-rosa);
   overflow: hidden;
 }
 .galeria__progreso[hidden] { display: none; }
@@ -502,7 +503,7 @@ a { color: inherit; }
   inset: 0 auto 0 0;
   width: var(--visible, 30%);
   border-radius: 2px;
-  background: var(--rosa);
+  background: var(--verde);
   transform: translateX(var(--avance, 0%));
 }
 
@@ -519,7 +520,7 @@ a { color: inherit; }
 .datos { display: grid; gap: 1.5rem; margin: 0 0 2.5rem; }
 .datos dt {
   margin-bottom: .2rem;
-  color: var(--tinta-suave);
+  color: var(--salvia);
   font-size: .875rem;
   font-weight: 600;
 }
@@ -529,7 +530,7 @@ a { color: inherit; }
   display: inline-flex;
   align-items: center;
   min-height: 2.75rem;
-  color: var(--verde);
+  color: var(--rosa);
   font-family: var(--f-titulo);
   font-size: clamp(2.25rem, 1.9rem + 1.6vw, 3rem);
   line-height: 1;
@@ -541,20 +542,20 @@ a { color: inherit; }
 
 address { margin-bottom: 1rem; font-style: normal; }
 
-.horario__titulo { margin-bottom: .6rem; color: var(--verde); font-size: 1.75rem; }
+.horario__titulo { margin-bottom: .6rem; color: var(--rosa); font-size: 1.75rem; }
 
 .horario { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
 .horario th,
 .horario td {
   padding: .8rem 0;
-  border-bottom: 1px solid var(--linea-rosa);
+  border-bottom: 1px solid var(--linea-verde);
   font-weight: 400;
   text-align: left;
   vertical-align: top;
 }
 .horario tr:first-child th,
-.horario tr:first-child td { border-top: 1px solid var(--linea-rosa); }
-.horario td { padding-left: 1rem; text-align: right; color: var(--tinta-suave); }
+.horario tr:first-child td { border-top: 1px solid var(--linea-verde); }
+.horario td { padding-left: 1rem; text-align: right; color: var(--salvia); }
 
 /* En móvil estrecho, cada tramo del horario en su línea */
 .horario__tramo { display: block; }
@@ -568,14 +569,14 @@ address { margin-bottom: 1rem; font-style: normal; }
 
 /* El día de hoy (lo marca main.js con la hora de Errenteria) */
 .horario .es-hoy th { font-weight: 600; }
-.horario .es-hoy td { color: var(--tinta); }
+.horario .es-hoy td { color: var(--rosa-claro); }
 .horario__hoy {
   display: inline-block;
   margin-left: .55rem;
   padding: .05rem .55rem;
   border-radius: 999px;
-  background: var(--verde);
-  color: var(--rosa);
+  background: var(--rosa);
+  color: var(--verde);
   font-size: .75rem;
   font-weight: 600;
   vertical-align: .1em;
@@ -587,7 +588,7 @@ address { margin-bottom: 1rem; font-style: normal; }
   height: 20rem;
   border: 0;
   border-radius: var(--radio);
-  background: var(--rosa-claro);
+  background: var(--verde-hondo);   /* mientras carga el mapa */
 }
 
 @media (min-width: 900px) {
@@ -600,27 +601,23 @@ address { margin-bottom: 1rem; font-style: normal; }
 
 .pie {
   padding-block: 3rem 2.5rem;
-  background: var(--verde-hondo);
-  color: var(--salvia);
+  background: var(--rosa);
+  color: var(--tinta-suave);
   font-size: .9375rem;
 }
-.pie__interior { display: grid; gap: 1.75rem; }
+.pie__interior { display: grid; gap: 1.5rem; justify-items: start; }
 
-.pie__marca { display: flex; align-items: center; gap: .6rem; color: var(--rosa); }
-.pie__marca .marca__hoja { width: 2.75rem; height: 2.75rem; }
-.pie__marca .marca__nombre { font-size: 1.75rem; }
-.pie__lema { margin-top: .35rem; font-size: .8125rem; font-weight: 500; }
+/* Logotipo completo de Blume */
+.pie__logo { width: 10.5rem; height: auto; }
 
-.pie a { color: var(--rosa-claro); text-decoration-thickness: 1px; text-underline-offset: .3em; }
+.pie a { color: var(--verde); text-decoration-thickness: 1px; text-underline-offset: .3em; }
 .pie__datos a { display: inline-flex; align-items: center; min-height: 2.75rem; }
 .pie__legal { display: flex; flex-wrap: wrap; gap: 0 1.75rem; }
 .pie__legal a { display: inline-flex; align-items: center; min-height: 2.75rem; }
-.pie .pendiente { color: var(--rosa); }
 
 @media (min-width: 1024px) {
   .pie__interior { grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; column-gap: 4rem; }
   .pie__datos { justify-self: center; text-align: center; }
-  .pie .pendiente { grid-column: 1 / -1; }
 }
 
 /* Página de textos legales (pendiente) */
