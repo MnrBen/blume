@@ -3,6 +3,11 @@
 Lo que hay que revisar antes de convertir la demo en una web real. La demo está
 en `index.html` (una sola página) y lleva `noindex` mientras lo sea.
 
+**Estado:** demo completada (etiqueta `demo-final`). Colores: fondos rosa y
+crema alternos, titulares y texto en tinta, y el verde del logotipo solo como
+acento (botones, enlaces, teléfono, palmeras, iconos y el borde del bloque de
+pedido).
+
 ## Datos que faltan
 
 | Dato | Dónde se nota | Qué se ha hecho |
