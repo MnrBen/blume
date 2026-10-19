@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Textos legales · Blume</title>
+  <meta name="theme-color" content="#f2e1dc">
+  <link rel="icon" type="image/png" href="../imagenes/icono.png">
+  <link rel="apple-touch-icon" href="../imagenes/icono.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Gloock&display=swap">
+  <link rel="stylesheet" href="styles.css">
+  <script src="main.js"></script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-tel" viewBox="0 0 24 24">
+      <path d="M7.4 3.5H5.2A1.7 1.7 0 0 0 3.5 5.3C3.9 13.6 10.4 20.1 18.7 20.5a1.7 1.7 0 0 0 1.8-1.7v-2.2a1.2 1.2 0 0 0-.9-1.2l-3-.8a1.2 1.2 0 0 0-1.2.4l-1.2 1.4a12.6 12.6 0 0 1-5.6-5.6L10 9.6a1.2 1.2 0 0 0 .4-1.2l-.8-3a1.2 1.2 0 0 0-1.2-.9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4.5 9h15M4.5 15h15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cerrar" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-siguiente" viewBox="0 0 24 24">
+      <path d="M4 12h15.5M13.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <header class="cabecera" data-cabecera>
+    <div class="cabecera__interior">
+      <a class="marca" href="index.html" aria-label="Blume, ir al inicio">
+        <img class="marca__logo" src="../imagenes/logo-horizontal.webp" width="590" height="132" alt="">
+      </a>
+      <nav class="cabecera__nav" id="menu" aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="conocenos.html">Conócenos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="cabecera__acciones">
+        <a class="boton boton--cabecera" href="tel:+34943501930">
+          <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+          <span class="solo-movil">Llamar</span>
+          <span class="solo-escritorio">943 50 19 30</span>
+        </a>
+        <button class="boton-redondo menu-boton" type="button" aria-expanded="false" aria-controls="menu" data-menu-boton hidden>
+          <svg class="icono icono--abrir" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icono icono--cerrar" aria-hidden="true"><use href="#i-cerrar"/></svg>
+          <span class="visualmente-oculto">Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="seccion legal" id="contenido">
+    <div class="contenedor">
+      <h1>Textos legales</h1>
+      <p class="pendiente">Pendiente: estos textos se redactarán y revisarán antes de publicar la web.</p>
+
+      <section id="aviso-legal" class="legal__bloque">
+        <h2>Aviso legal</h2>
+        <p class="pendiente">Pendiente de redactar.</p>
+      </section>
+
+      <section id="privacidad" class="legal__bloque">
+        <h2>Privacidad y cookies</h2>
+        <p class="pendiente">Pendiente de redactar. La web usa Google Fonts y, en la página de contacto, un mapa de Google Maps: hay que contemplarlos aquí.</p>
+      </section>
+
+      <p class="legal__volver">
+        <a class="enlace-flecha" href="index.html">
+          Volver al inicio
+          <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+        </a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="pie">
+    <div class="contenedor pie__interior">
+      <img class="pie__logo" src="../imagenes/logo-pie.webp" width="600" height="517" loading="lazy" alt="Blume, planta natural y artificial">
+      <p class="pie__datos">Biteri Kalea, 2, bajo 1C · Errenteria<br><a href="tel:+34943501930">943 50 19 30</a></p>
+      <nav class="pie__legal" aria-label="Textos legales">
+        <a href="legal.html#aviso-legal">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad y cookies</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

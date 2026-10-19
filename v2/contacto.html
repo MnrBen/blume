@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Contacto · Blume, floristería en Errenteria</title>
+  <meta name="description" content="Pide tus flores en Blume: llama al 943 50 19 30 o ven a la tienda en Biteri Kalea, 2, Errenteria. Compra en tienda, entrega a domicilio o recogida. Horario y cómo llegar.">
+  <meta name="theme-color" content="#f2e1dc">
+  <link rel="icon" type="image/png" href="../imagenes/icono.png">
+  <link rel="apple-touch-icon" href="../imagenes/icono.png">
+
+  <!-- Tipografías: Gloock (titulares, serifa de contraste con carácter) y Albert Sans (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Gloock&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Sin defer a propósito: marca <html class="js"> antes de pintar; el resto espera a DOMContentLoaded -->
+  <script src="main.js"></script>
+</head>
+<body>
+  <!-- Iconos: se dibujan una vez y se reutilizan con <use> -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-tel" viewBox="0 0 24 24">
+      <path d="M7.4 3.5H5.2A1.7 1.7 0 0 0 3.5 5.3C3.9 13.6 10.4 20.1 18.7 20.5a1.7 1.7 0 0 0 1.8-1.7v-2.2a1.2 1.2 0 0 0-.9-1.2l-3-.8a1.2 1.2 0 0 0-1.2.4l-1.2 1.4a12.6 12.6 0 0 1-5.6-5.6L10 9.6a1.2 1.2 0 0 0 .4-1.2l-.8-3a1.2 1.2 0 0 0-1.2-.9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4.5 9h15M4.5 15h15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cerrar" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-tienda" viewBox="0 0 24 24">
+      <path d="M4.5 10.5V20h15v-9.5M3.5 4h17l1 5.2a2.6 2.6 0 0 1-5 .8 2.6 2.6 0 0 1-5 0 2.6 2.6 0 0 1-5 0 2.6 2.6 0 0 1-5-.8zM9.5 20v-5.5h5V20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-casa" viewBox="0 0 24 24">
+      <path d="M3.5 11 12 3.8l8.5 7.2M5.5 9.5V20h13V9.5M10 20v-5.5h4V20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-bolsa" viewBox="0 0 24 24">
+      <path d="M5.5 8h13l-1 12.5h-11zM9 10.5V7a3 3 0 0 1 6 0v3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-ruta" viewBox="0 0 24 24">
+      <path d="M12 21s-6.5-5.9-6.5-11a6.5 6.5 0 0 1 13 0c0 5.1-6.5 11-6.5 11z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+      <circle cx="12" cy="10" r="2.3" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    </symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24">
+      <rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/>
+      <circle cx="17.2" cy="6.8" r="1.1" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===== Cabecera fija: marca, menú y llamada (siempre visible) ===== -->
+  <header class="cabecera" data-cabecera>
+    <div class="cabecera__interior">
+      <a class="marca" href="index.html" aria-label="Blume, ir al inicio">
+        <img class="marca__logo" src="../imagenes/logo-horizontal.webp" width="590" height="132" alt="">
+      </a>
+      <nav class="cabecera__nav" id="menu" aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="conocenos.html">Conócenos</a>
+        <a href="contacto.html" aria-current="page">Contacto</a>
+      </nav>
+      <div class="cabecera__acciones">
+        <a class="boton boton--cabecera" href="tel:+34943501930">
+          <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+          <span class="solo-movil">Llamar</span>
+          <span class="solo-escritorio">943 50 19 30</span>
+        </a>
+        <button class="boton-redondo menu-boton" type="button" aria-expanded="false" aria-controls="menu" data-menu-boton hidden>
+          <svg class="icono icono--abrir" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icono icono--cerrar" aria-hidden="true"><use href="#i-cerrar"/></svg>
+          <span class="visualmente-oculto">Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===== Pide tus flores: llamar y cómo pedir ===== -->
+    <section class="intro pedir" aria-labelledby="titulo">
+      <div class="contenedor">
+        <p class="antetitulo">
+          <span class="antetitulo__hoja" aria-hidden="true"></span>
+          Contacto
+        </p>
+        <h1 id="titulo">Pide tus flores</h1>
+        <p class="intro__texto">Llama a la tienda o pásate a vernos y te ayudamos a elegir.</p>
+        <p class="pedir__accion">
+          <a class="boton boton--principal" href="tel:+34943501930">
+            <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+            Llamar al 943 50 19 30
+          </a>
+        </p>
+
+        <div class="entrega">
+          <h2 class="entrega__titulo">Cómo pedir</h2>
+          <ul class="entrega__opciones">
+            <li>
+              <svg class="entrega__icono" aria-hidden="true"><use href="#i-tienda"/></svg>
+              <span><strong>En la tienda</strong> Pasa, mira y elige.</span>
+            </li>
+            <li>
+              <svg class="entrega__icono" aria-hidden="true"><use href="#i-casa"/></svg>
+              <span><strong>A domicilio</strong> Lo llevamos a la dirección que nos digas.</span>
+            </li>
+            <li>
+              <svg class="entrega__icono" aria-hidden="true"><use href="#i-bolsa"/></svg>
+              <span><strong>Recogida en tienda</strong> Lo encargas y pasas a por ello.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Ven a vernos: horario, dirección, redes y mapa ===== -->
+    <section class="seccion visitanos" id="visitanos" aria-labelledby="visitanos-titulo">
+      <div class="contenedor visitanos__rejilla">
+        <div class="visitanos__datos">
+          <header class="seccion__cabeza">
+            <p class="antetitulo">
+              <span class="antetitulo__hoja" aria-hidden="true"></span>
+              Horario y dirección
+            </p>
+            <h2 id="visitanos-titulo">Ven a vernos</h2>
+          </header>
+
+          <div class="visitanos__bloque">
+            <h3>Horario</h3>
+            <table class="horario">
+              <caption class="visualmente-oculto">Horario de apertura de la tienda</caption>
+              <tbody>
+                <tr data-dias="1 2 3 4 5">
+                  <th scope="row">Lunes a viernes</th>
+                  <td><span class="horario__tramo">10:00–13:00</span><span class="horario__y"> y </span><span class="horario__tramo">16:30–19:30</span></td>
+                </tr>
+                <tr data-dias="6">
+                  <th scope="row">Sábado</th>
+                  <td>10:30–13:30</td>
+                </tr>
+                <tr data-dias="0">
+                  <th scope="row">Domingo</th>
+                  <td>Cerrado</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="visitanos__bloque">
+            <h3>Dirección</h3>
+            <address>Biteri Kalea, 2, bajo 1C<br>20100 Errenteria, Gipuzkoa</address>
+            <a class="boton boton--secundario" href="https://www.google.com/maps/dir/?api=1&amp;destination=Biteri%20Kalea%202%2C%2020100%20Errenteria%2C%20Gipuzkoa" target="_blank" rel="noopener">
+              <svg class="icono" aria-hidden="true"><use href="#i-ruta"/></svg>
+              Cómo llegar <span class="visualmente-oculto">(se abre Google Maps)</span>
+            </a>
+          </div>
+
+          <div class="visitanos__bloque">
+            <h3>Redes</h3>
+            <ul class="redes">
+              <li class="redes__item">
+                <svg class="redes__icono" aria-hidden="true"><use href="#i-instagram"/></svg>
+                Instagram
+                <span class="pendiente">Pendiente: enlace</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="visitanos__mapa">
+          <iframe src="https://www.google.com/maps?q=Biteri%20Kalea%202%2C%2020100%20Errenteria%2C%20Gipuzkoa&amp;output=embed"
+                  width="600" height="450" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"
+                  title="Mapa: Blume en Biteri Kalea, 2, Errenteria"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Pie ===== -->
+  <footer class="pie">
+    <div class="contenedor pie__interior">
+      <img class="pie__logo" src="../imagenes/logo-pie.webp" width="600" height="517" loading="lazy" alt="Blume, planta natural y artificial">
+      <p class="pie__datos">Biteri Kalea, 2, bajo 1C · Errenteria<br><a href="tel:+34943501930">943 50 19 30</a></p>
+      <nav class="pie__legal" aria-label="Textos legales">
+        <a href="legal.html#aviso-legal">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad y cookies</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
