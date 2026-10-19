@@ -69,3 +69,47 @@ pantalla completa en escritorio: la portada va a media pantalla y la galería a
 - Enlace o muestra de su Instagram.
 - Versión en euskera.
 - Logotipo en vectorial y fotos a mayor resolución.
+
+## Versión 2 (carpeta `v2/`)
+
+Ampliación a varias páginas con la misma identidad de la demo final, que no se
+toca (sigue en la raíz y en la etiqueta `demo-final`). La v2 tiene su propio
+`styles.css` y `main.js` y comparte las fotos de `imagenes/`.
+
+- **Inicio** (`v2/index.html`): portada igual; servicios igual, con «Ver más en
+  la galería»; adelanto de la galería en rejilla rota ligera; franja final con
+  «Llamar» y «Cómo llegar» (lleva a Contacto).
+- **Galería** (`v2/galeria.html`): 11 fotos con filtros (Ramos y centros, Flor
+  seca y preservada, Plantas, Coronas) y visor.
+- **Conócenos** (`v2/conocenos.html`): quiénes son, con datos confirmados, y
+  seis reseñas literales.
+- **Contacto** (`v2/contacto.html`): «Pide tus flores», cómo pedir, horario,
+  dirección, redes y el mapa más grande. El mapa de Google solo se carga aquí.
+- **Legal** (`v2/legal.html`): pendiente, como en la demo.
+
+### Fotos en la v2
+
+| Foto | Dónde | Observaciones |
+|---|---|---|
+| `exterior2` | Portada de Inicio | No va en la galería: ya es la portada y en la foto entera se ven las pegatinas de otro cartel. |
+| `interior1`, `ramo-deco1`, `flores-secas2` | Servicios de Inicio y Galería | Sin problemas. |
+| `exterior1`, `ramo-deco2`, `flores-secas3`, `plantas1`, `flores-secas1` | Adelanto de Inicio y Galería | `plantas1` solo sale en el adelanto desde 600 px. |
+| `ramo-boda1`, `ramo-boda3` | Galería | Mano con pulsera / persona de cuerpo parcial, sin cara. |
+| `corona-floral1` | Galería (última, filtro «Coronas») | Las hacen (confirmado). Persona desenfocada al fondo. |
+| `ramo-boda2` | Conócenos | **Se supone que es Susana: confirmarlo** y pedir permiso (tatuaje visible). El texto alternativo no dice que sea ella. |
+| `corona-floral2` | No usada | Dedicatoria personal legible en la cinta; recortarla destroza la foto. |
+| `ramo-deco3` | No usada | Interior de una vivienda particular. |
+
+### Reseñas citadas
+
+Seis, completas y literales, sin fechas: Ainhoa K., Idoia S., Nerea A.,
+Esteban R., Eneko M. y Elene O. (apellidos reducidos a la inicial). Se han
+dejado fuera las incompletas, las traducidas y la que habla de precios «más
+económicos de la zona». Antes de publicar: **permiso de Susana** y confirmar la
+plataforma (parecen de Google) si se quiere nombrar o enlazar.
+
+### Extras para cobrar (los datos los tiene el cliente)
+
+- Enlace a **Instagram**: el sitio está preparado en Contacto, con marcador.
+- **WhatsApp**, **email**, **zona y condiciones de reparto**.
+- **Más fotos** y a mayor resolución (la destacada «#etiquetastories» de Instagram).
