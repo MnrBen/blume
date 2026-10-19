@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Blume · Floristería en el centro de Errenteria</title>
+  <meta name="description" content="Floristería Blume, en el centro de Errenteria: ramos y centros personalizados de Susana, plantas naturales y artificiales y flor seca y preservada. Compra en tienda, entrega a domicilio o recogida.">
+  <meta name="theme-color" content="#f2e1dc">
+  <link rel="icon" type="image/png" href="../imagenes/icono.png">
+  <link rel="apple-touch-icon" href="../imagenes/icono.png">
+
+  <!-- Tipografías: Gloock (titulares, serifa de contraste con carácter) y Albert Sans (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Gloock&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Sin defer a propósito: marca <html class="js"> antes de pintar; el resto espera a DOMContentLoaded -->
+  <script src="main.js"></script>
+</head>
+<body>
+  <!-- Iconos: se dibujan una vez y se reutilizan con <use> -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-tel" viewBox="0 0 24 24">
+      <path d="M7.4 3.5H5.2A1.7 1.7 0 0 0 3.5 5.3C3.9 13.6 10.4 20.1 18.7 20.5a1.7 1.7 0 0 0 1.8-1.7v-2.2a1.2 1.2 0 0 0-.9-1.2l-3-.8a1.2 1.2 0 0 0-1.2.4l-1.2 1.4a12.6 12.6 0 0 1-5.6-5.6L10 9.6a1.2 1.2 0 0 0 .4-1.2l-.8-3a1.2 1.2 0 0 0-1.2-.9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4.5 9h15M4.5 15h15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cerrar" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-siguiente" viewBox="0 0 24 24">
+      <path d="M4 12h15.5M13.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-tienda" viewBox="0 0 24 24">
+      <path d="M4.5 10.5V20h15v-9.5M3.5 4h17l1 5.2a2.6 2.6 0 0 1-5 .8 2.6 2.6 0 0 1-5 0 2.6 2.6 0 0 1-5 0 2.6 2.6 0 0 1-5-.8zM9.5 20v-5.5h5V20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-casa" viewBox="0 0 24 24">
+      <path d="M3.5 11 12 3.8l8.5 7.2M5.5 9.5V20h13V9.5M10 20v-5.5h4V20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-bolsa" viewBox="0 0 24 24">
+      <path d="M5.5 8h13l-1 12.5h-11zM9 10.5V7a3 3 0 0 1 6 0v3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </svg>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===== Cabecera fija: marca, menú y llamada (siempre visible) ===== -->
+  <header class="cabecera" data-cabecera>
+    <div class="cabecera__interior">
+      <a class="marca" href="index.html" aria-label="Blume, ir al inicio">
+        <img class="marca__logo" src="../imagenes/logo-horizontal.webp" width="590" height="132" alt="">
+      </a>
+      <nav class="cabecera__nav" id="menu" aria-label="Principal">
+        <a href="index.html" aria-current="page">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="conocenos.html">Conócenos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="cabecera__acciones">
+        <a class="boton boton--cabecera" href="tel:+34943501930">
+          <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+          <span class="solo-movil">Llamar</span>
+          <span class="solo-escritorio">943 50 19 30</span>
+        </a>
+        <button class="boton-redondo menu-boton" type="button" aria-expanded="false" aria-controls="menu" data-menu-boton hidden>
+          <svg class="icono icono--abrir" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icono icono--cerrar" aria-hidden="true"><use href="#i-cerrar"/></svg>
+          <span class="visualmente-oculto">Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===== Portada: el escaparate de noche; en móvil, foto arriba y texto debajo ===== -->
+    <section class="portada" aria-labelledby="portada-titulo">
+      <div class="portada__interior">
+        <figure class="portada__foto">
+          <img src="../imagenes/exterior2.webp" width="880" height="651" fetchpriority="high"
+               alt="Escaparate de Blume de noche, con la luz encendida: rosas, hortensias, plantas colgantes y el logotipo al fondo">
+        </figure>
+        <div class="portada__texto">
+          <p class="antetitulo">
+            <span class="antetitulo__hoja" aria-hidden="true"></span>
+            Floristería · Planta natural y artificial
+          </p>
+          <h1 id="portada-titulo">Conoce Blume, en el centro de Errenteria</h1>
+          <p class="portada__entrada">Ramos y centros personalizados, plantas naturales y artificiales y una gran variedad de flor seca y preservada.</p>
+          <div class="portada__acciones">
+            <a class="boton boton--principal" href="tel:+34943501930">
+              <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+              Llamar al 943 50 19 30
+            </a>
+            <a class="enlace-flecha" href="contacto.html#visitanos">
+              Horario y cómo llegar
+              <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Servicios: lo que hay en la tienda y cómo pedirlo ===== -->
+    <section class="seccion servicios" id="servicios" aria-labelledby="servicios-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabeza">
+          <p class="antetitulo">
+            <span class="antetitulo__hoja" aria-hidden="true"></span>
+            Servicios
+          </p>
+          <h2 id="servicios-titulo">Botánica y diseño floral</h2>
+        </header>
+
+        <ul class="servicios__lista">
+          <li class="servicio">
+            <img class="servicio__foto servicio__foto--plantas" src="../imagenes/interior1.webp" width="479" height="576" loading="lazy"
+                 alt="Estanterías de la tienda con orquídeas, palmeras de interior, cactus y otras plantas en maceta">
+            <h3>Plantas naturales y artificiales</h3>
+            <p>Para tu casa o para regalar. Naturales o artificiales, según lo que busques.</p>
+          </li>
+          <li class="servicio">
+            <img class="servicio__foto servicio__foto--ramos" src="../imagenes/ramo-deco1.webp" width="565" height="575" loading="lazy"
+                 alt="Hortensias rosadas en un jarrón de cristal labrado">
+            <h3>Ramos y centros personalizados</h3>
+            <p>Los prepara la propia Susana. Cuéntale para quién es y cómo lo imaginas.</p>
+          </li>
+          <li class="servicio">
+            <img class="servicio__foto servicio__foto--seca" src="../imagenes/flores-secas2.webp" width="476" height="573" loading="lazy"
+                 alt="Centro de flor seca y preservada en tonos rosa y granate, con rosas">
+            <h3>Flor seca y preservada</h3>
+            <p>Una gran variedad de flor seca y preservada, sola o en ramos y centros.</p>
+          </li>
+        </ul>
+
+        <p class="servicios__mas">
+          <a class="boton boton--secundario" href="galeria.html">
+            Ver más en la galería
+            <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+          </a>
+        </p>
+
+        <div class="entrega">
+          <h3 class="entrega__titulo">Cómo pedir tus flores y plantas</h3>
+          <ul class="entrega__opciones">
+            <li>
+              <svg class="entrega__icono" aria-hidden="true"><use href="#i-tienda"/></svg>
+              <span><strong>En la tienda</strong> Pasa, mira y elige.</span>
+            </li>
+            <li>
+              <svg class="entrega__icono" aria-hidden="true"><use href="#i-casa"/></svg>
+              <span><strong>A domicilio</strong> Lo llevamos a la dirección que nos digas.</span>
+            </li>
+            <li>
+              <svg class="entrega__icono" aria-hidden="true"><use href="#i-bolsa"/></svg>
+              <span><strong>Recogida en tienda</strong> Lo encargas y pasas a por ello.</span>
+            </li>
+          </ul>
+          <p class="entrega__nota">Para encargos, llama al <a href="tel:+34943501930">943 50 19 30</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Galería: adelanto en rejilla «rota» ligera; la galería completa tiene página propia ===== -->
+    <section class="seccion adelanto" aria-labelledby="adelanto-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabeza">
+          <p class="antetitulo">
+            <span class="antetitulo__hoja" aria-hidden="true"></span>
+            Galería
+          </p>
+          <h2 id="adelanto-titulo">Ramos, centros y plantas de Blume</h2>
+        </header>
+
+        <div class="adelanto__marco">
+          <div class="adelanto__rejilla">
+            <img class="adelanto__foto adelanto__foto--a" src="../imagenes/exterior1.webp" width="922" height="696" loading="lazy"
+                 alt="Brezos, pensamientos, romero, tomillo y otras plantas en flor, en cajas de madera a la puerta de la tienda">
+            <img class="adelanto__foto adelanto__foto--b" src="../imagenes/ramo-deco2.webp" width="531" height="758" loading="lazy"
+                 alt="Gran centro de flores en colores vivos, en una copa de cristal sobre el mostrador">
+            <img class="adelanto__foto adelanto__foto--c" src="../imagenes/flores-secas3.webp" width="473" height="572" loading="lazy"
+                 alt="Centro de flor seca sobre un pie de cerámica calada, junto a una campana de cristal con flor rosa">
+            <img class="adelanto__foto adelanto__foto--d" src="../imagenes/plantas1.webp" width="516" height="926" loading="lazy"
+                 alt="Palmera, helecho y otras plantas verdes en maceta">
+            <img class="adelanto__foto adelanto__foto--e" src="../imagenes/flores-secas1.webp" width="926" height="696" loading="lazy"
+                 alt="Composición en blanco y turquesa con flor preservada, espigas y hojas de eucalipto">
+          </div>
+        </div>
+
+        <p class="adelanto__mas">
+          <a class="boton boton--secundario" href="galeria.html">
+            Ver la galería completa
+            <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+          </a>
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Franja final: llamar y cómo llegar (el contacto completo tiene página propia) ===== -->
+    <section class="franja" aria-labelledby="franja-titulo">
+      <div class="contenedor">
+        <h2 id="franja-titulo">Ven a vernos o llámanos</h2>
+        <p class="franja__texto">Biteri Kalea, 2 · Errenteria</p>
+        <div class="acciones">
+          <a class="boton boton--principal" href="tel:+34943501930">
+            <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+            Llamar al 943 50 19 30
+          </a>
+          <a class="enlace-flecha" href="contacto.html#visitanos">
+            Cómo llegar
+            <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Pie ===== -->
+  <footer class="pie">
+    <div class="contenedor pie__interior">
+      <img class="pie__logo" src="../imagenes/logo-pie.webp" width="600" height="517" loading="lazy" alt="Blume, planta natural y artificial">
+      <p class="pie__datos">Biteri Kalea, 2, bajo 1C · Errenteria<br><a href="tel:+34943501930">943 50 19 30</a></p>
+      <nav class="pie__legal" aria-label="Textos legales">
+        <a href="legal.html#aviso-legal">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad y cookies</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
