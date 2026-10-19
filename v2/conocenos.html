@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Conócenos · Blume, floristería en Errenteria</title>
+  <meta name="description" content="Blume es la floristería de Susana en el centro de Errenteria: ramos y centros hechos por ella, plantas naturales y artificiales y flor seca y preservada. Lo que dicen sus clientes.">
+  <meta name="theme-color" content="#f2e1dc">
+  <link rel="icon" type="image/png" href="../imagenes/icono.png">
+  <link rel="apple-touch-icon" href="../imagenes/icono.png">
+
+  <!-- Tipografías: Gloock (titulares, serifa de contraste con carácter) y Albert Sans (texto) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@400;500;600&family=Gloock&display=swap">
+
+  <link rel="stylesheet" href="styles.css">
+  <!-- Sin defer a propósito: marca <html class="js"> antes de pintar; el resto espera a DOMContentLoaded -->
+  <script src="main.js"></script>
+</head>
+<body>
+  <!-- Iconos: se dibujan una vez y se reutilizan con <use> -->
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-tel" viewBox="0 0 24 24">
+      <path d="M7.4 3.5H5.2A1.7 1.7 0 0 0 3.5 5.3C3.9 13.6 10.4 20.1 18.7 20.5a1.7 1.7 0 0 0 1.8-1.7v-2.2a1.2 1.2 0 0 0-.9-1.2l-3-.8a1.2 1.2 0 0 0-1.2.4l-1.2 1.4a12.6 12.6 0 0 1-5.6-5.6L10 9.6a1.2 1.2 0 0 0 .4-1.2l-.8-3a1.2 1.2 0 0 0-1.2-.9z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24">
+      <path d="M4.5 9h15M4.5 15h15" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-cerrar" viewBox="0 0 24 24">
+      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-siguiente" viewBox="0 0 24 24">
+      <path d="M4 12h15.5M13.5 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-estrella" viewBox="0 0 24 24">
+      <path d="M12 3.4l2.6 5.4 5.9.8-4.3 4.2 1 5.9L12 16.9l-5.2 2.8 1-5.9-4.3-4.2 5.9-.8z" fill="currentColor"/>
+    </symbol>
+  </svg>
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
+
+  <!-- ===== Cabecera fija: marca, menú y llamada (siempre visible) ===== -->
+  <header class="cabecera" data-cabecera>
+    <div class="cabecera__interior">
+      <a class="marca" href="index.html" aria-label="Blume, ir al inicio">
+        <img class="marca__logo" src="../imagenes/logo-horizontal.webp" width="590" height="132" alt="">
+      </a>
+      <nav class="cabecera__nav" id="menu" aria-label="Principal">
+        <a href="index.html">Inicio</a>
+        <a href="galeria.html">Galería</a>
+        <a href="conocenos.html" aria-current="page">Conócenos</a>
+        <a href="contacto.html">Contacto</a>
+      </nav>
+      <div class="cabecera__acciones">
+        <a class="boton boton--cabecera" href="tel:+34943501930">
+          <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+          <span class="solo-movil">Llamar</span>
+          <span class="solo-escritorio">943 50 19 30</span>
+        </a>
+        <button class="boton-redondo menu-boton" type="button" aria-expanded="false" aria-controls="menu" data-menu-boton hidden>
+          <svg class="icono icono--abrir" aria-hidden="true"><use href="#i-menu"/></svg>
+          <svg class="icono icono--cerrar" aria-hidden="true"><use href="#i-cerrar"/></svg>
+          <span class="visualmente-oculto">Menú</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+
+    <!-- ===== Quiénes somos: solo datos confirmados ===== -->
+    <section class="intro" aria-labelledby="titulo">
+      <div class="contenedor conocenos">
+        <div class="conocenos__texto">
+          <p class="antetitulo">
+            <span class="antetitulo__hoja" aria-hidden="true"></span>
+            Conócenos
+          </p>
+          <h1 id="titulo">Blume, la floristería de Susana</h1>
+          <p>Blume es una tienda de botánica y diseño floral en el centro de Errenteria. La lleva Susana, que prepara ella misma los ramos, los centros y cada trabajo floral.</p>
+          <p>En la tienda encontrarás plantas naturales y artificiales y una gran variedad de flor seca y preservada. Puedes llevártelo en el momento, encargarlo y pasar a recogerlo o pedir que te lo llevemos a domicilio.</p>
+        </div>
+        <figure class="conocenos__foto">
+          <img src="../imagenes/ramo-boda2.webp" width="529" height="762"
+               alt="Ramo de flor preservada con hortensia blanca y melocotón, sostenido por una persona con el delantal de Blume">
+        </figure>
+      </div>
+    </section>
+
+    <!-- ===== Reseñas: literales, completas y sin fechas ===== -->
+    <section class="seccion resenas" aria-labelledby="resenas-titulo">
+      <div class="contenedor">
+        <header class="seccion__cabeza">
+          <p class="antetitulo">
+            <span class="antetitulo__hoja" aria-hidden="true"></span>
+            Reseñas
+          </p>
+          <h2 id="resenas-titulo">Lo que dicen de Blume</h2>
+          <p class="resenas__nota">
+            <span class="estrellas" aria-hidden="true">
+              <svg class="icono"><use href="#i-estrella"/></svg>
+              <svg class="icono"><use href="#i-estrella"/></svg>
+              <svg class="icono"><use href="#i-estrella"/></svg>
+              <svg class="icono"><use href="#i-estrella"/></svg>
+              <svg class="icono"><use href="#i-estrella"/></svg>
+            </span>
+            21 reseñas, todas con 5 estrellas.
+          </p>
+        </header>
+
+        <div class="resenas__lista">
+          <figure class="resena">
+            <blockquote><p>He comprado un ramo para mi ama y le ha encantado. Lo mejor, la dueña, Susana. Es una profesional, con mucho gusto y súper honesta, algo que no abunda.</p></blockquote>
+            <figcaption>Ainhoa K.</figcaption>
+          </figure>
+          <figure class="resena">
+            <blockquote><p>¡La única floristería que ha sabido entender lo que quería! Repito constantemente y siempre acierta. La atención es impecable, cercana y honesta. ¡Sus consejos siempre son acertados para mis plantas y para los ramos! Además, el precio es muy bueno, aunque lo mejor es su dedicación.</p></blockquote>
+            <figcaption>Idoia S.</figcaption>
+          </figure>
+          <figure class="resena">
+            <blockquote><p>Un sitio precioso y una atención maravillosa. Se nota que hay mucha pasión en todos los trabajos que realiza Susana.</p></blockquote>
+            <figcaption>Nerea A.</figcaption>
+          </figure>
+          <figure class="resena">
+            <blockquote><p>Una floristería con variedad de flores y plantas. La disposición de la señorita que me atendió fue muy agradable. Aquel día estaba buscando un ramo de flores para mi novia y me ayudó a construir uno muy lindo.</p></blockquote>
+            <figcaption>Esteban R.</figcaption>
+          </figure>
+          <figure class="resena">
+            <blockquote><p>La atención al cliente fue una maravilla, Susana fue muy atenta y precisa a la hora de escuchar y escoger lo que me gustaba. ¡Sigue así, Susana!</p></blockquote>
+            <figcaption>Eneko M.</figcaption>
+          </figure>
+          <figure class="resena">
+            <blockquote><p>La dueña de la floristería le tiene perfectamente pillado el gusto a mi chica, nos prepara unos ramos preciosos.</p></blockquote>
+            <figcaption>Elene O.</figcaption>
+          </figure>
+        </div>
+
+        <div class="cierre">
+          <p class="cierre__texto">¿Te pasas por la tienda?</p>
+          <div class="acciones">
+            <a class="boton boton--principal" href="tel:+34943501930">
+              <svg class="icono" aria-hidden="true"><use href="#i-tel"/></svg>
+              Llamar al 943 50 19 30
+            </a>
+            <a class="enlace-flecha" href="contacto.html#visitanos">
+              Cómo llegar
+              <svg class="icono" aria-hidden="true"><use href="#i-siguiente"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Pie ===== -->
+  <footer class="pie">
+    <div class="contenedor pie__interior">
+      <img class="pie__logo" src="../imagenes/logo-pie.webp" width="600" height="517" loading="lazy" alt="Blume, planta natural y artificial">
+      <p class="pie__datos">Biteri Kalea, 2, bajo 1C · Errenteria<br><a href="tel:+34943501930">943 50 19 30</a></p>
+      <nav class="pie__legal" aria-label="Textos legales">
+        <a href="legal.html#aviso-legal">Aviso legal</a>
+        <a href="legal.html#privacidad">Privacidad y cookies</a>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
