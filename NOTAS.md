@@ -96,7 +96,8 @@ toca (sigue en la raíz y en la etiqueta `demo-final`). La v2 tiene su propio
 | `exterior1`, `ramo-deco2`, `flores-secas3`, `plantas1`, `flores-secas1` | Adelanto de Inicio y Galería | `plantas1` solo sale en el adelanto desde 600 px. |
 | `ramo-boda1`, `ramo-boda3` | Galería | Mano con pulsera / persona de cuerpo parcial, sin cara. |
 | `corona-floral1` | Galería (última, filtro «Coronas») | Las hacen (confirmado). Persona desenfocada al fondo. |
-| `ramo-boda2` | Conócenos | **Se supone que es Susana: confirmarlo** y pedir permiso (tatuaje visible). El texto alternativo no dice que sea ella. |
+| `susana` | Conócenos | Foto de Susana que aporta el cliente (737 × 895). Está hecha en otro comercio: detrás se ve un cartel promocional de **Jardiland**, ilegible al tamaño de la web; no se puede recortar sin cortarle el pelo. Confirmar con ella que le vale esta foto. |
+| `ramo-boda2` | No usada en la v2 | Sustituida por la foto de Susana en Conócenos. En la galería ya está `ramo-boda3`, el mismo ramo desde otro ángulo. |
 | `corona-floral2` | No usada | Dedicatoria personal legible en la cinta; recortarla destroza la foto. |
 | `ramo-deco3` | No usada | Interior de una vivienda particular. |
 
