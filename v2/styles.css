@@ -1,0 +1,962 @@
+/* =============================================================
+   Blume · Floristería — v2 (Inicio, Galería, Conócenos y Contacto)
+   -------------------------------------------------------------
+    1. Variables             9. Adelanto de la galería (Inicio)
+    2. Base                 10. Franja final y cierres
+    3. Utilidades           11. Galería (página)
+    4. Botones y enlaces    12. Conócenos y reseñas
+    5. Cabecera y menú      13. Contacto
+    6. Portada (Inicio)     14. Pie y página legal
+    7. Secciones comunes    15. Visor de fotos
+    8. Servicios y pedido   16. Movimiento
+   Mobile-first: estilos base para móvil y min-width para más ancho.
+
+   Criterio de color, el mismo de la demo (cuatro colores, nada más):
+   - rosa y crema: fondos, alternos y empezando en rosa en cada página;
+   - tinta: titulares y texto;
+   - el verde del logotipo de Blume (#106820): único acento, solo en
+     botones, enlaces, teléfono, palmeras e iconos. Nunca en bloques.
+   Las fotos se comparten con la demo desde ../imagenes/.
+   ============================================================= */
+
+
+/* 1. Variables ------------------------------------------------ */
+
+:root {
+  --rosa: #f2e1dc;              /* rosa empolvado */
+  --crema: #f6f1e8;             /* crema */
+  --tinta: #2e2b26;             /* titulares y texto */
+  --tinta-suave: #5a544b;       /* texto secundario */
+  --verde: #106820;             /* el verde del logotipo: acento */
+  --verde-oscuro: #0b4f18;      /* el mismo verde, al pasar por encima */
+  --verde-linea: rgb(16 104 32 / .35);  /* contorno de los botones redondos */
+  --linea: rgb(46 43 38 / .15);         /* líneas finas */
+  --foco: var(--verde);
+
+  --f-titulo: "Gloock", Georgia, serif;
+  --f-texto: "Albert Sans", "Segoe UI", system-ui, sans-serif;
+
+  --cabecera: 3.75rem;
+  --margen: 1.25rem;
+  --ancho: 72rem;
+  --radio: 14px;
+  --curva: cubic-bezier(.2, .7, .2, 1);
+}
+
+@media (min-width: 600px) { :root { --margen: 1.75rem; } }
+@media (min-width: 768px) { :root { --cabecera: 4.5rem; } }
+@media (min-width: 1024px) { :root { --margen: 2.5rem; } }
+
+
+/* 2. Base ----------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* Que la cabecera fija no tape ni los destinos de los enlaces # ni el foco */
+  scroll-padding-top: calc(var(--cabecera) + 1rem);
+  scroll-padding-bottom: 1.5rem;
+}
+
+body {
+  margin: 0;
+  background: var(--rosa);
+  color: var(--tinta);
+  font-family: var(--f-texto);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  margin: 0;
+  color: var(--tinta);
+  font-family: var(--f-titulo);
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -.01em;
+  text-wrap: balance;
+}
+
+p, figure, blockquote { margin: 0; }
+ul { margin: 0; padding: 0; list-style: none; }
+a { color: inherit; }
+
+:focus-visible { outline: 2px solid var(--foco); outline-offset: 3px; }
+
+
+/* 3. Utilidades ----------------------------------------------- */
+
+.contenedor {
+  max-width: calc(var(--ancho) + 2 * var(--margen));
+  margin-inline: auto;
+  padding-inline: var(--margen);
+}
+
+.visualmente-oculto {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+.icono { width: 1.25rem; height: 1.25rem; flex: none; }
+
+.saltar {
+  position: absolute;
+  top: -10rem;
+  left: var(--margen);
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  padding: .5rem 1rem;
+  border-radius: 999px;
+  background: var(--verde);
+  color: var(--crema);
+  font-weight: 600;
+}
+.saltar:focus { top: .5rem; }
+
+/* Antetítulo de cada sección: texto en tinta y la palmera del logotipo en
+   verde (la imagen hace de máscara y se rellena de verde) */
+.antetitulo {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-bottom: .9rem;
+  color: var(--tinta);
+  font-size: .875rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: .02em;
+}
+.antetitulo__hoja {
+  width: 1.5rem;
+  height: 1.6rem;
+  flex: none;
+  background: var(--verde);
+  -webkit-mask: url("../imagenes/logo-hoja.webp") center / contain no-repeat;
+          mask: url("../imagenes/logo-hoja.webp") center / contain no-repeat;
+}
+
+.solo-escritorio { display: none; }
+@media (min-width: 768px) {
+  .solo-movil { display: none; }
+  .solo-escritorio { display: inline; }
+}
+
+/* Marcador de dato pendiente: visible a propósito mientras sea demo */
+.pendiente {
+  justify-self: start;
+  padding: .35rem .75rem;
+  border: 1px dashed currentColor;
+  border-radius: 8px;
+  color: var(--tinta-suave);
+  font-size: .875rem;
+  line-height: 1.4;
+}
+
+
+/* 4. Botones y enlaces ---------------------------------------- */
+
+.boton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  min-height: 3.25rem;
+  padding: .8rem 1.5rem;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font: 600 1rem/1.2 var(--f-texto);
+  text-decoration: none;
+  transition: background-color .25s, color .25s, border-color .25s;
+}
+
+/* La acción principal (llamar): verde del logotipo relleno */
+.boton--principal,
+.boton--cabecera { background: var(--verde); color: var(--crema); }
+.boton--principal:hover,
+.boton--cabecera:hover { background: var(--verde-oscuro); }
+
+.boton--cabecera {
+  min-height: 2.75rem;
+  padding: .5rem 1.1rem;
+  font-size: .9375rem;
+}
+.boton--cabecera .icono { width: 1.1rem; height: 1.1rem; }
+
+/* Secundario: contorno verde */
+.boton--secundario { border-color: var(--verde); color: var(--verde); }
+.boton--secundario:hover { background: var(--verde); color: var(--crema); }
+
+/* Enlace de texto con flecha que avanza un poco al pasar por encima */
+.enlace-flecha {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 2.75rem;
+  color: var(--verde);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .35em;
+}
+.enlace-flecha .icono { transition: transform .3s var(--curva); }
+.enlace-flecha:hover .icono { transform: translateX(4px); }
+
+/* Botones redondos (visor de fotos y menú) */
+.boton-redondo {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1.5px solid var(--verde-linea);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--verde);
+  cursor: pointer;
+  transition: border-color .25s, background-color .25s, color .25s;
+}
+.boton-redondo:hover { border-color: var(--verde); background: var(--verde); color: var(--crema); }
+
+
+/* 5. Cabecera y menú ------------------------------------------ */
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--rosa);
+  color: var(--tinta);
+  border-bottom: 1px solid var(--linea);
+}
+
+.cabecera__interior {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  max-width: calc(var(--ancho) + 2 * var(--margen));
+  height: var(--cabecera);
+  margin-inline: auto;
+  padding-inline: var(--margen);
+}
+
+.marca {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;
+  margin-right: auto;
+}
+/* Logotipo de Blume en horizontal (palmera + nombre), como en el vinilo del
+   escaparate; sin el subtítulo, que a este tamaño no se leería */
+.marca__logo { width: auto; height: 2.125rem; }
+
+/* El botón de llamar se ve siempre, de principio a fin, en todas las páginas */
+.cabecera__acciones { display: flex; align-items: center; gap: .5rem; }
+
+.menu-boton[hidden] { display: none; }
+.menu-boton .icono--cerrar { display: none; }
+/* Abierto: contorno verde entero, sin relleno (el único botón verde relleno
+   es el de llamar) */
+.menu-boton[aria-expanded="true"] { border-color: var(--verde); }
+.menu-boton[aria-expanded="true"] .icono--abrir { display: none; }
+.menu-boton[aria-expanded="true"] .icono--cerrar { display: block; }
+
+.cabecera__nav { display: none; }
+
+/* Móvil y tableta: menú desplegable bajo la cabecera */
+@media (max-width: 899.98px) {
+  /* Sin JS no hay botón de menú: los enlaces salen en una segunda fila */
+  html:not(.js) .cabecera__interior { flex-wrap: wrap; height: auto; padding-block: .5rem; }
+  html:not(.js) .cabecera__nav { display: flex; flex-wrap: wrap; order: 3; width: 100%; gap: 0 1.25rem; }
+  html:not(.js) .cabecera__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .cabecera--abierta .cabecera__nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: grid;
+    padding: .25rem var(--margen) 1.5rem;
+    background: var(--rosa);
+    border-bottom: 1px solid var(--linea);
+  }
+  .cabecera--abierta .cabecera__nav a {
+    display: flex;
+    align-items: center;
+    min-height: 3.5rem;
+    border-bottom: 1px solid var(--linea);
+    font-family: var(--f-titulo);
+    font-size: 1.75rem;
+    text-decoration: none;
+  }
+
+  /* Página actual, con o sin JS (más específica que la fila sin JS) */
+  .cabecera .cabecera__nav a[aria-current="page"] {
+    text-decoration: underline;
+    text-decoration-color: var(--verde);
+    text-decoration-thickness: 2px;
+    text-underline-offset: .3em;
+  }
+}
+
+@media (min-width: 768px) {
+  .marca__logo { height: 2.5rem; }
+}
+
+/* Escritorio: marca a la izquierda, menú centrado y llamada a la derecha */
+@media (min-width: 900px) {
+  .cabecera__interior { display: grid; grid-template-columns: 1fr auto 1fr; gap: .5rem; }
+  .marca { justify-self: start; margin-right: 0; }
+  .cabecera__acciones { justify-self: end; }
+  .menu-boton { display: none; }
+  .cabecera__nav { display: flex; gap: .25rem; }
+  .cabecera__nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    padding-inline: .8rem;
+    color: var(--tinta-suave);
+    font-size: .9375rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .cabecera__nav a:hover { color: var(--verde); }
+  .cabecera__nav a[aria-current="page"] {
+    color: var(--tinta);
+    text-decoration: underline;
+    text-decoration-color: var(--verde);
+    text-decoration-thickness: 2px;
+    text-underline-offset: .55em;
+  }
+}
+
+
+/* 6. Portada (Inicio): el escaparate de noche ------------------ */
+
+.portada__interior {
+  display: grid;
+  max-width: calc(var(--ancho) + 2 * var(--margen));
+  margin-inline: auto;
+}
+
+/* Móvil: la foto arriba, a todo lo ancho y con su color real. El encuadre
+   deja fuera los 55 px de la izquierda, donde hay pegatinas de otro cartel */
+.portada__foto { overflow: hidden; }
+.portada__foto img {
+  width: 100%;
+  aspect-ratio: 825 / 651;
+  object-fit: cover;
+  object-position: 100% 50%;
+}
+
+.portada__texto { padding: 1.75rem var(--margen) 3rem; }
+
+.portada h1 {
+  max-width: 14ch;
+  font-size: clamp(2.5rem, 1.6rem + 3.4vw, 4.25rem);
+  line-height: 1.02;
+}
+
+.portada__entrada {
+  max-width: 32rem;
+  margin-top: 1rem;
+  color: var(--tinta-suave);
+  font-size: 1.125rem;
+}
+
+.portada__acciones {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .75rem 1.5rem;
+  margin-top: 1.75rem;
+}
+
+/* Tableta: foto a lo ancho pero recortada en alto */
+@media (min-width: 600px) and (max-width: 959px) {
+  .portada__foto img {
+    height: min(50vh, 27rem);
+    aspect-ratio: auto;
+    object-position: 100% 40%;
+  }
+}
+
+/* Escritorio: texto a la izquierda y escaparate a la derecha, a media
+   pantalla (nunca más grande que la foto real, que mide 880 × 651) */
+@media (min-width: 960px) {
+  .portada__interior {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    align-items: center;
+    padding-inline: var(--margen);
+  }
+  .portada__texto { grid-column: 1; grid-row: 1; padding: 3rem 2.5rem 3.5rem 0; }
+  .portada__foto { grid-column: 2; grid-row: 1; margin-block: 2.25rem 2.75rem; border-radius: var(--radio); }
+}
+
+
+/* 7. Secciones comunes y cabeceras de página ------------------ */
+
+/* Fondos de cada página, empezando en rosa y nunca dos iguales seguidos:
+   Inicio     portada R · servicios C · adelanto R · franja C · pie R
+   Galería    intro R · fotos C · pie R
+   Conócenos  intro R · reseñas C · pie R
+   Contacto   intro R · visítanos C · pie R
+   Legal      legal C · pie R */
+.portada, .intro, .adelanto { background: var(--rosa); }
+.servicios, .franja, .fotos, .resenas, .visitanos, .legal { background: var(--crema); }
+
+.seccion { padding-block: 3.5rem; }
+.seccion__cabeza { margin-bottom: 2rem; }
+.seccion h2 {
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+}
+
+@media (min-width: 768px) {
+  .seccion { padding-block: 5rem; }
+  .seccion__cabeza { margin-bottom: 2.75rem; }
+}
+
+/* Cabecera de las páginas interiores (título y entradilla) */
+.intro { padding-block: 2.75rem 3.25rem; }
+.intro h1 {
+  max-width: 18ch;
+  font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+}
+.intro__texto {
+  max-width: 36rem;
+  margin-top: 1rem;
+  color: var(--tinta-suave);
+  font-size: 1.125rem;
+}
+
+@media (min-width: 768px) {
+  .intro { padding-block: 4rem 4.5rem; }
+}
+
+
+/* 8. Servicios y pedido --------------------------------------- */
+
+.servicios__lista { display: grid; gap: 2.5rem; }
+
+.servicio__foto {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  margin-bottom: 1.1rem;
+  border-radius: var(--radio);
+}
+.servicio__foto--plantas { object-position: 50% 35%; }
+.servicio__foto--seca { object-position: 50% 60%; }
+.servicio__foto--ramos { object-position: 50% 22%; }
+
+.servicio h3 { margin-bottom: .45rem; font-size: 1.75rem; }
+.servicio p { max-width: 30rem; color: var(--tinta-suave); }
+
+/* «Ver más en la galería», centrado bajo las tres tarjetas */
+.servicios__mas { display: flex; justify-content: center; margin-top: 2.5rem; }
+
+@media (min-width: 700px) {
+  .servicios__lista { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+  .servicio__foto { aspect-ratio: 4 / 5; }
+  .servicio__foto--seca { object-position: 50% 50%; }
+  .servicio__foto--ramos { object-position: 50% 50%; }
+}
+@media (min-width: 1024px) { .servicios__lista { gap: 2.5rem; } }
+
+/* Cómo pedir: compra en tienda, domicilio o recogida, enmarcado con un
+   borde fino en el verde del logotipo */
+.entrega {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 3rem;
+  padding: 1.75rem 1.5rem;
+  border: 1.5px solid var(--verde);
+  border-radius: var(--radio);
+}
+.entrega__titulo { font-size: 1.75rem; }
+.entrega__opciones { display: grid; gap: 1.25rem; }
+.entrega__opciones li { display: flex; align-items: flex-start; gap: .9rem; color: var(--tinta-suave); line-height: 1.45; }
+.entrega__opciones strong { display: block; color: var(--tinta); font-weight: 600; }
+.entrega__icono { width: 2rem; height: 2rem; flex: none; color: var(--verde); }
+.entrega__nota a {
+  color: var(--verde);
+  font-weight: 600;
+  text-decoration-thickness: 1px;
+  text-underline-offset: .25em;
+  white-space: nowrap;
+}
+
+@media (min-width: 700px) {
+  .entrega { padding: 2rem 2.25rem; }
+  .entrega__opciones { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+}
+/* Escritorio: título a la izquierda y opciones a la derecha; la nota de
+   encargos, debajo y centrada en la página */
+@media (min-width: 1024px) {
+  .entrega { grid-template-columns: 13rem minmax(0, 1fr); column-gap: 2rem; align-items: start; }
+  .entrega__nota { grid-column: 1 / -1; text-align: center; }
+}
+
+
+/* 9. Adelanto de la galería (Inicio) --------------------------- */
+
+/* Rejilla «rota» ligera: celdas cuadradas (el alto de fila se calcula con el
+   ancho del contenedor) y fotos de distintos tamaños, desplazadas a propósito.
+   Móvil: 6 columnas y 4 fotos. Desde 600 px: 12 columnas y 5 fotos. */
+.adelanto__marco { container-type: inline-size; }
+
+.adelanto__rejilla {
+  --g: .5rem;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 3.25rem;                              /* sin consultas de contenedor */
+  grid-auto-rows: calc((100cqi - 5 * var(--g)) / 6);    /* celdas cuadradas */
+  gap: var(--g);
+}
+
+.adelanto__foto {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: var(--radio);
+}
+.adelanto__foto--a { grid-column: 1 / 7; grid-row: 1 / 5; }
+.adelanto__foto--b { grid-column: 1 / 4; grid-row: 5 / 10; }
+.adelanto__foto--c { grid-column: 4 / 7; grid-row: 6 / 9; }
+.adelanto__foto--d { display: none; }
+.adelanto__foto--e { grid-column: 4 / 7; grid-row: 9 / 12; }
+
+.adelanto__mas { display: flex; justify-content: center; margin-top: 2.5rem; }
+
+@media (min-width: 600px) {
+  .adelanto__rejilla {
+    --g: .75rem;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-auto-rows: calc((100cqi - 11 * var(--g)) / 12);
+  }
+  .adelanto__foto--a { grid-column: 1 / 7; grid-row: 1 / 5; }
+  .adelanto__foto--b { grid-column: 7 / 10; grid-row: 2 / 7; }
+  .adelanto__foto--c { grid-column: 10 / 13; grid-row: 1 / 4; }
+  .adelanto__foto--d { display: block; grid-column: 10 / 13; grid-row: 4 / 8; }
+  .adelanto__foto--e { grid-column: 2 / 6; grid-row: 5 / 8; }
+}
+@media (min-width: 900px) {
+  .adelanto__rejilla { --g: 1rem; }
+}
+
+
+/* 10. Franja final y cierres ---------------------------------- */
+
+/* Franja corta al final de Inicio: llamar y cómo llegar */
+.franja { padding-block: 3rem; text-align: center; }
+.franja h2 { font-size: clamp(1.875rem, 1.5rem + 1.6vw, 2.75rem); }
+.franja__texto { margin-top: .6rem; color: var(--tinta-suave); }
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .franja { padding-block: 4rem; }
+}
+
+/* Cierre de la Galería y de Conócenos, dentro de su sección */
+.cierre {
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--linea);
+  text-align: center;
+}
+.cierre__texto {
+  font-family: var(--f-titulo);
+  font-size: clamp(1.5rem, 1.3rem + 1vw, 2rem);
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+
+/* 11. Galería (página) ---------------------------------------- */
+
+/* Filtros por categoría (los activa main.js; sin JS se ven todas las fotos).
+   En móvil se deslizan en una fila; desde 768 px se reparten en varias */
+.filtros {
+  display: flex;
+  gap: .5rem;
+  margin: 0 calc(-1 * var(--margen)) 1.5rem;
+  padding: .4rem var(--margen);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.filtros::-webkit-scrollbar { display: none; }
+.filtros[hidden] { display: none; }
+
+.filtro {
+  flex: none;
+  min-height: 2.75rem;
+  padding: .5rem 1.15rem;
+  border: 1.5px solid var(--linea);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--tinta);
+  font: 600 .9375rem/1.2 var(--f-texto);
+  cursor: pointer;
+  transition: border-color .2s, color .2s, background-color .2s;
+}
+.filtro:hover { border-color: var(--verde); color: var(--verde); }
+.filtro[aria-pressed="true"] { border-color: var(--verde); background: var(--rosa); color: var(--verde); }
+
+@media (min-width: 768px) {
+  .filtros { flex-wrap: wrap; margin-inline: 0; padding-inline: 0; overflow: visible; }
+}
+
+/* Rejilla justificada: cada foto entera, con su proporción (--r = ancho/alto),
+   y todas las de una fila a la misma altura. La última fila no se estira. */
+.rejilla {
+  --alto: 9.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.rejilla::after { content: ""; flex-grow: 999999; }
+.rejilla__item {
+  flex-grow: var(--r);
+  flex-shrink: 1;
+  flex-basis: calc(var(--alto) * var(--r));
+}
+.rejilla__item[hidden] { display: none; }
+
+.rejilla__foto {
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radio);
+}
+.rejilla__foto img { width: 100%; height: auto; }
+
+@media (min-width: 600px) {
+  .rejilla { --alto: 13rem; gap: .75rem; }
+}
+@media (min-width: 1024px) {
+  .rejilla { --alto: 17rem; }
+}
+
+
+/* 12. Conócenos y reseñas ------------------------------------- */
+
+.conocenos { display: grid; gap: 2.25rem; }
+.conocenos__texto p:not(.antetitulo) {
+  max-width: 36rem;
+  margin-top: 1rem;
+  color: var(--tinta-suave);
+  font-size: 1.125rem;
+}
+.conocenos__foto img { width: 100%; border-radius: var(--radio); }
+
+@media (min-width: 600px) {
+  .conocenos__foto { max-width: 26rem; }
+}
+@media (min-width: 900px) {
+  .conocenos {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    align-items: center;
+    gap: 4rem;
+  }
+  .conocenos__foto { justify-self: end; width: 100%; }
+}
+
+.resenas__nota {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .75rem;
+  margin-top: 1rem;
+  color: var(--tinta-suave);
+}
+.estrellas { display: inline-flex; gap: .15rem; color: var(--verde); }
+.estrellas .icono { width: 1.1rem; height: 1.1rem; }
+
+/* Reseñas literales en columnas (una, dos o tres según el ancho) */
+.resenas__lista { columns: 1; column-gap: 1.25rem; }
+.resena {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+  padding: 1.5rem 1.5rem 1.35rem;
+  border-radius: var(--radio);
+  background: var(--rosa);
+}
+.resena::before {
+  content: "\201C";
+  display: block;
+  height: 1.6rem;
+  color: var(--verde);
+  font: 400 3rem/1 var(--f-titulo);
+}
+.resena figcaption {
+  margin-top: 1rem;
+  color: var(--tinta-suave);
+  font-size: .9375rem;
+  font-weight: 600;
+}
+
+@media (min-width: 700px) {
+  .resenas__lista { columns: 2; }
+}
+@media (min-width: 1024px) {
+  .resenas__lista { columns: 3; column-gap: 1.5rem; }
+  .resena { margin-bottom: 1.5rem; }
+}
+
+
+/* 13. Contacto ------------------------------------------------ */
+
+.pedir__accion { margin-top: 1.75rem; }
+.pedir .entrega { margin-top: 2.75rem; }
+
+.visitanos__rejilla { display: grid; gap: 2.75rem; }
+.visitanos__bloque + .visitanos__bloque { margin-top: 2.25rem; }
+.visitanos h3 { margin-bottom: .75rem; font-size: 1.75rem; }
+
+address { margin-bottom: 1rem; font-style: normal; }
+
+.horario { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.horario th,
+.horario td {
+  padding: .8rem 0;
+  border-bottom: 1px solid var(--linea);
+  font-weight: 400;
+  text-align: left;
+  vertical-align: top;
+}
+.horario tr:first-child th,
+.horario tr:first-child td { border-top: 1px solid var(--linea); }
+.horario td { padding-left: 1rem; text-align: right; color: var(--tinta-suave); }
+
+/* En móvil estrecho, cada tramo del horario en su línea */
+.horario__tramo { display: block; }
+.horario__y {
+  position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+@media (min-width: 420px) {
+  .horario__tramo { display: inline; }
+  .horario__y { position: static; width: auto; height: auto; overflow: visible; clip: auto; }
+}
+
+/* El día de hoy (lo marca main.js con la hora de Errenteria) */
+.horario .es-hoy th { font-weight: 600; }
+.horario .es-hoy td { color: var(--tinta); }
+.horario__hoy {
+  display: inline-block;
+  margin-left: .55rem;
+  padding: .05rem .55rem;
+  border-radius: 999px;
+  background: var(--verde);
+  color: var(--crema);
+  font-size: .75rem;
+  font-weight: 600;
+  vertical-align: .1em;
+}
+
+/* Redes: el enlace es un extra pendiente; de momento solo el sitio */
+.redes { display: flex; flex-wrap: wrap; align-items: center; gap: .75rem 1rem; }
+.redes__item { display: inline-flex; align-items: center; gap: .5rem; min-height: 2.75rem; font-weight: 600; }
+.redes__icono { width: 1.5rem; height: 1.5rem; flex: none; color: var(--verde); }
+
+.visitanos__mapa iframe {
+  display: block;
+  width: 100%;
+  height: 24rem;
+  border: 0;
+  border-radius: var(--radio);
+  background: var(--rosa);   /* mientras carga el mapa */
+}
+
+@media (min-width: 900px) {
+  .visitanos__rejilla { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 4rem; }
+  .visitanos__mapa iframe { height: 100%; min-height: 36rem; }
+}
+
+
+/* 14. Pie y página legal -------------------------------------- */
+
+.pie {
+  padding-block: 3rem 2.5rem;
+  background: var(--rosa);
+  color: var(--tinta-suave);
+  font-size: .9375rem;
+}
+/* Móvil y tableta: una columna, todo centrado */
+.pie__interior { display: grid; gap: 1.25rem; justify-items: center; text-align: center; }
+
+/* Logotipo completo de Blume */
+.pie__logo { width: 10.5rem; height: auto; }
+
+.pie a { color: var(--verde); text-decoration-thickness: 1px; text-underline-offset: .3em; }
+.pie__datos a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+.pie__legal { display: flex; flex-wrap: wrap; justify-content: center; gap: 0 1.75rem; }
+.pie__legal a { display: inline-flex; align-items: center; min-height: 2.75rem; }
+
+/* Escritorio: logotipo a la izquierda, datos en el centro y legales a la derecha */
+@media (min-width: 1024px) {
+  .pie__interior {
+    grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+    align-items: center;
+    justify-items: stretch;
+    column-gap: 4rem;
+    text-align: left;
+  }
+  .pie__logo { justify-self: start; }
+  .pie__datos { justify-self: center; text-align: center; }
+  .pie__legal { justify-self: end; justify-content: flex-end; }
+}
+
+/* Página de textos legales (pendiente) */
+.legal h1 { margin-bottom: 1.5rem; font-size: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem); }
+.legal .pendiente { display: inline-block; }
+.legal__bloque { margin-top: 2.5rem; }
+.legal__bloque h2 { margin-bottom: .75rem; font-size: 1.75rem; }
+.legal__volver { margin-top: 3rem; }
+
+
+/* 15. Visor de fotos ------------------------------------------ */
+
+.visor {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--crema);
+  color: var(--tinta);
+}
+.visor::backdrop { background: transparent; }
+
+.visor__figura {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 4.5rem var(--margen) 6rem;
+  touch-action: pan-y;   /* el gesto horizontal lo maneja main.js */
+}
+
+.visor__marco {
+  display: grid;
+  place-items: center;
+  max-width: 100%;
+  min-height: 0;
+}
+
+/* Nunca más grande que la foto real: width/height auto + topes */
+.visor__img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(100svh - 13.5rem);
+  border-radius: var(--radio);
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.visor__pie {
+  max-width: 40rem;
+  color: var(--tinta-suave);
+  font-size: .9375rem;
+  line-height: 1.45;
+  text-align: center;
+}
+.visor__cuenta {
+  display: block;
+  color: var(--tinta);
+  font-size: .8125rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.visor__boton {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  border: 1.5px solid var(--verde-linea);
+  border-radius: 50%;
+  background: var(--crema);
+  color: var(--verde);
+  cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s;
+}
+.visor__boton:hover { border-color: var(--verde); background: var(--verde); color: var(--crema); }
+.visor__cerrar { top: .75rem; right: var(--margen); }
+.visor__nav { bottom: 1.25rem; }
+.visor__nav--anterior { left: var(--margen); }
+.visor__nav--siguiente { right: var(--margen); }
+
+@media (min-width: 768px) {
+  .visor__figura { padding: 4rem 6rem 2rem; }
+  .visor__img { max-height: calc(100svh - 10.5rem); }
+  .visor__nav { top: 50%; bottom: auto; transform: translateY(-50%); }
+}
+
+
+/* 16. Movimiento ---------------------------------------------- */
+
+/* Pocas animaciones y sobrias: la entrada de la portada, el menú al abrirse
+   y las fotos al cambiar de filtro. Solo con JS (clase .js) y nunca con
+   «reducir movimiento». El botón de llamar no se anima: está siempre a la vista. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+
+  .js .portada__foto img { animation: asentarse 1.8s var(--curva) both; }
+  .js .portada .antetitulo { animation: subir .9s var(--curva) .1s both; }
+  .js .portada h1 { animation: subir 1s var(--curva) .18s both; }
+
+  .cabecera--abierta .cabecera__nav { animation: desplegar .22s var(--curva); }
+  .rejilla__item.aparece { animation: aparecer .35s ease-out; }
+
+  @media (hover: hover) {
+    .rejilla__foto img { transition: transform .8s var(--curva); }
+    .rejilla__foto:hover img { transform: scale(1.03); }
+  }
+
+  .visor[open] { animation: aparecer .25s ease-out; }
+  .visor__img.entra { animation: aparecer .3s ease-out; }
+}
+
+@keyframes asentarse { from { transform: scale(1.06); } }
+@keyframes subir { from { opacity: 0; transform: translateY(.6em); } }
+@keyframes aparecer { from { opacity: 0; } }
+@keyframes desplegar { from { opacity: 0; transform: translateY(-.5rem); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
